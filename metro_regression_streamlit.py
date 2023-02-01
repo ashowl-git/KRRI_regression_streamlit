@@ -166,9 +166,9 @@ def user_input_features():
     heat_recover_effectiveness = st.sidebar.slider('heat_recover_effectiveness', 0.0, 1.0, 0.7)
     AHU_economiser = st.sidebar.select_slider('AHU_economiser', options=[0, 1])
     Occupied_floor_area = st.sidebar.slider('Occupied_floor_area', 5000, 10000, 6000)
-    Floor = st.sidebar.select_slider('Floor', options=[1,2,3])
-    Basement = st.sidebar.select_slider('Basement', options=[0, 1])
-    Ground = st.sidebar.select_slider('Ground', options=[0, 1])
+    Floor = st.sidebar.select_slider('Floor 규모선택', options=[1,2,3])
+    Basement = st.sidebar.select_slider('지상유무', options=[0, 1])
+    Ground = st.sidebar.select_slider('지하유무', options=[0, 1])
 
     data = {'ACH50': ACH50,
             'Lighting_power_density_': Lighting_power_density_,
