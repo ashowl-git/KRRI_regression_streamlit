@@ -28,11 +28,11 @@ import streamlit as st
 # # get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# Make Plotly work in your Jupyter Notebook
-from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
-init_notebook_mode(connected=True)
-# Use Plotly locally
-cf.go_offline()
+# # Make Plotly work in your Jupyter Notebook
+# from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
+# init_notebook_mode(connected=True)
+# # Use Plotly locally
+# cf.go_offline()
 
 
 # 사이킷런 라이브러리 불러오기 _ 통계, 학습 테스트세트 분리, 선형회귀등
