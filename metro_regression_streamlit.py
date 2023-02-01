@@ -199,7 +199,7 @@ df_result
 
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
-import plotly.figure_factory as ff
+# import plotly.figure_factory as ff
 
 # df_result.plot(kind='bar')
 st.bar_chart(df_result)
