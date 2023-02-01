@@ -19,13 +19,13 @@ import streamlit as st
 # sns.set(font="Malgun Gothic") 
 # from IPython.display import set_matplotlib_formats
 # set_matplotlib_formats("retina")
-import matplotlib.pyplot as plt
-import plotly.io as pio
-import plotly.express as px
-import plotly.graph_objects as go 
-import chart_studio.plotly as py
-import cufflinks as cf
-# get_ipython().run_line_magic('matplotlib', 'inline')
+# import matplotlib.pyplot as plt
+# import plotly.io as pio
+# import plotly.express as px
+# import plotly.graph_objects as go 
+# import chart_studio.plotly as py
+# import cufflinks as cf
+# # get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # Make Plotly work in your Jupyter Notebook
