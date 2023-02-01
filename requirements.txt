@@ -5,3 +5,6 @@ lxml
 seaborn
 sklearn
 scipy
+sklearn.model_selection 
+sklearn.linear_model
+sklearn.metrics 
