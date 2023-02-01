@@ -157,7 +157,8 @@ coeff2 = pd.DataFrame(np.round(lr.coef_,2), \
 st.sidebar.header('Specify Input Parameters')
 
 def user_input_features():
-    ACH50 = st.sidebar.slider('ACH50', X_data.ACH50.min(), X_data.ACH50.max(), X_data.ACH50.mean())
+    # ACH50 = st.sidebar.slider('ACH50', X_data.ACH50.min(), X_data.ACH50.max(), X_data.ACH50.mean())
+    ACH50 = st.sidebar.slider('ACH50', 0, 50, 25)
     Lighting_power_density_ = st.sidebar.slider('Lighting_power_density_', X_data.Lighting_power_density_.min(), X_data.Lighting_power_density_.max(), X_data.Lighting_power_density_.mean())
     Chiller_COP = st.sidebar.slider('Chiller_COP', X_data.Chiller_COP.min(), X_data.Chiller_COP.max(), X_data.Chiller_COP.mean())
     Pump_efficiency = st.sidebar.slider('Pump_efficiency', X_data.Pump_efficiency.min(), X_data.Pump_efficiency.max(), X_data.Pump_efficiency.mean())
