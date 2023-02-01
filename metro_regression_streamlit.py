@@ -14,11 +14,11 @@ import pandas as pd
 
 import streamlit as st
 
-import seaborn as sns
-sns.set(font="D2Coding") 
+# import seaborn as sns
+# sns.set(font="D2Coding") 
 # sns.set(font="Malgun Gothic") 
-from IPython.display import set_matplotlib_formats
-set_matplotlib_formats("retina")
+# from IPython.display import set_matplotlib_formats
+# set_matplotlib_formats("retina")
 import matplotlib.pyplot as plt
 import plotly.io as pio
 import plotly.express as px
