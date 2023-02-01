@@ -135,7 +135,7 @@ coeff = coeff.rename(columns={
     6:'DHW',
     7:'Electricity_total',
 })
-coeff
+# coeff
 
 
 # 회귀계수를 테이블로 만들어 보기 2 그대로 보기
