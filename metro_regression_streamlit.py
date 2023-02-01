@@ -52,7 +52,7 @@ from sklearn.metrics import mean_squared_log_error
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
   df_raw = pd.read_excel(uploaded_file)
-  st.write(df_raw)
+#   st.write(df_raw)
 
 
 # df_raw.columns
