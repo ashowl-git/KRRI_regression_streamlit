@@ -1,7 +1,9 @@
 altair
 pandas
+numpy
 requests
 lxml
 seaborn
-sklearn
+scikit-learn
 scipy
+streamlit
