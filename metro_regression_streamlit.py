@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 
 import streamlit as st
-
+import sklearn
 import seaborn as sns
 # sns.set(font="D2Coding") 
 # sns.set(font="Malgun Gothic") 
