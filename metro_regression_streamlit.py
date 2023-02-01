@@ -161,7 +161,7 @@ def user_input_features():
     ACH50 = st.sidebar.slider('ACH50', 0, 50, 25)
     Lighting_power_density_ = st.sidebar.slider('Lighting_power_density_', 3, 20, 7)
     Chiller_COP = st.sidebar.slider('Chiller_COP', 4, 9, 6)
-    Pump_efficiency = st.sidebar.slider('Pump_efficiency', 0, 1, 0.7)
+    Pump_efficiency = st.sidebar.slider('Pump_efficiency', 0.0, 1.0, 0.7)
     Fan_total_efficiency = st.sidebar.slider('Fan_total_efficiency', 0, 1, 0.7)
     heat_recover_effectiveness = st.sidebar.slider('heat_recover_effectiveness', 0, 1, 0.7)
     AHU_economiser = st.select_slider('AHU_economiser', options=[0, 1])
