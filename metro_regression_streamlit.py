@@ -135,7 +135,7 @@ coeff = coeff.rename(columns={
     6:'DHW',
     7:'Electricity_total',
 })
-# coeff
+coeff
 
 
 # 회귀계수를 테이블로 만들어 보기 2 그대로 보기
@@ -157,11 +157,6 @@ coeff2 = pd.DataFrame(np.round(lr.coef_,2), \
 st.sidebar.header('Specify Input Parameters')
 
 def user_input_features():
-    start_color, end_color = st.select_slider(
-    'Select a range of color wavelength',
-    options=['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
-    value=('red', 'blue'))
-    
     ACH50 = st.sidebar.slider('ACH50', X_data.ACH50.min(), X_data.ACH50.max(), X_data.ACH50.mean())
     Lighting_power_density_ = st.sidebar.slider('Lighting_power_density_', X_data.Lighting_power_density_.min(), X_data.Lighting_power_density_.max(), X_data.Lighting_power_density_.mean())
     Chiller_COP = st.sidebar.slider('Chiller_COP', X_data.Chiller_COP.min(), X_data.Chiller_COP.max(), X_data.Chiller_COP.mean())
