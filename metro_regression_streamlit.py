@@ -110,8 +110,6 @@ mae = mean_absolute_error(y_test, y_preds)
 mape = mean_absolute_percentage_error(y_test, y_preds)
 
 
-mse
-
 # Mean Squared Logarithmic Error cannot be used when targets contain negative values.
 # msle = mean_squared_log_error(y_test, y_preds)
 # rmsle = np.sqrt(msle)
@@ -120,10 +118,9 @@ print('MSE : {0:.3f}, RMSE : {1:.3f}'.format(mse, rmse))
 print('MAE : {0:.3f}, MAPE : {1:.3f}'.format(mae, mape))
 # print('MSLE : {0:.3f}, RMSLE : {1:.3f}'.format(msle, rmsle))
 
-
 print('Variance score(r2_score) : {0:.3f}'.format(r2_score(y_test, y_preds)))
-
-
+r2 = r2_score(y_test, y_preds)
+r2 
 print('절편값:',lr.intercept_)
 print('회귀계수값:',np.round(lr.coef_, 1))
 # print('회귀계수값:',lr.coef_)
