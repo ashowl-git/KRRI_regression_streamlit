@@ -101,11 +101,16 @@ lr.fit(X_train, y_train)
 # 테스트 세트로 예측해보고 예측결과를 평가하기
 y_preds = lr.predict(X_test)
 
+st.subheader('LinearRegression 학습 대상 파일 직접 업로드 하기')
+st.caption('업로드 하지 않아도 기본 학습 Data-set 으로 작동합니다 ', unsafe_allow_html=False)
 
 mse = mean_squared_error(y_test, y_preds)
 rmse = np.sqrt(mse)
 mae = mean_absolute_error(y_test, y_preds)
 mape = mean_absolute_percentage_error(y_test, y_preds)
+
+
+mse
 
 # Mean Squared Logarithmic Error cannot be used when targets contain negative values.
 # msle = mean_squared_log_error(y_test, y_preds)
