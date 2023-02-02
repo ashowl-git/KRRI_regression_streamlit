@@ -194,6 +194,9 @@ result = lr.predict(df)
 # result = lr.predict(input)
 # result
 
+
+st.subheader('에너지 사용량 예측값')
+st.caption('--------- ', unsafe_allow_html=False)
 # 예측값을 데이터 프레임으로 만들어 보기
 df_result = pd.DataFrame(result, columns=['Room_Electricity', 'Lighting', 'Fans', 
 'Pumps', 'Heating', 'Cooling','DHW', 'Electricity_total']).T.rename(columns={0:'kW'})
@@ -202,7 +205,8 @@ df_result
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
 # import plotly.figure_factory as ff
-
+st.subheader('에너지 사용량 예측값 그래프')
+st.caption('--------- ', unsafe_allow_html=False)
 # df_result.plot(kind='bar')
 st.bar_chart(df_result)
 
