@@ -56,7 +56,7 @@ if uploaded_file is not None:
   df_raw = pd.read_excel(uploaded_file)
   st.write(df_raw)
 
-
+st.header('학습파일 직접 업로드 하기')
 # df_raw.columns
 
 # 독립변수컬럼
