@@ -49,8 +49,8 @@ from sklearn.metrics import mean_squared_log_error
 df_raw = pd.read_excel('data/metro_sim.xlsx')
 # df_raw.head()
 
-st.header('학습 대상 파일 직접 업로드 하기')
-st.caption('body', unsafe_allow_html=True)
+st.header('LinearRegression 학습 대상 파일 직접 업로드 하기')
+st.caption('업로드 하지 않아도 기본 학습 Data-set 으로 작동합니다 ', unsafe_allow_html=False)
 # 학습할 파일을 직접 업로드 하고 싶을때
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
