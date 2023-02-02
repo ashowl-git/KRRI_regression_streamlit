@@ -50,7 +50,7 @@ df_raw = pd.read_excel('data/metro_sim.xlsx')
 # df_raw.head()
 
 
-학습할 파일을 직접 업로드 하고 싶을때
+# 학습할 파일을 직접 업로드 하고 싶을때
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
   df_raw = pd.read_excel(uploaded_file)
