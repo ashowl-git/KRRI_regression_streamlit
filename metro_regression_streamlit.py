@@ -236,3 +236,7 @@ st.bar_chart(df_result)
 
 
 # trigger = st.button('Predict', on_click=predict)
+
+
+
+df_result.iplot(kind='bar')
