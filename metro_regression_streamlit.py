@@ -49,14 +49,14 @@ from sklearn.metrics import mean_squared_log_error
 df_raw = pd.read_excel('data/metro_sim.xlsx')
 # df_raw.head()
 
-
+st.header('학습 대상 파일 직접 업로드 하기')
+st.caption('body', unsafe_allow_html=False)
 # 학습할 파일을 직접 업로드 하고 싶을때
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
   df_raw = pd.read_excel(uploaded_file)
   st.write(df_raw)
 
-st.header('학습파일 직접 업로드 하기')
 # df_raw.columns
 
 # 독립변수컬럼
