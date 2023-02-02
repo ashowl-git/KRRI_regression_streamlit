@@ -123,11 +123,15 @@ print('Variance score(r2_score) : {0:.3f}'.format(r2_score(y_test, y_preds)))
 
 r2 = r2_score(y_test, y_preds)
 
-col1, col2, col3, col4, col5 = st.columns(5)
+col1, col2 = st.columns(2)
 col1.metric(label='Variance score(r2_score)', value = np.round(r2, 3))
 col2.metric(label='mean_squared_error', value = np.round(mse, 3))
+
+col3, col4 = st.columns(2)
 col3.metric(label='root mean_squared_error', value = np.round(rmse, 3))
 col4.metric(label='mean_absolute_error', value = np.round(mae, 3))
+
+col5 = st.columns(1)
 col5.metric(label='mean_absolute_percentage_error', value = np.round(mape, 3))
 
 
