@@ -219,6 +219,7 @@ result = lr.predict(df)
 
 
 st.subheader('에너지 사용량 예측값')
+st.caption('좌측의 변수항목 슬라이더 조정 ', unsafe_allow_html=False)
 st.caption('--------- ', unsafe_allow_html=False)
 # 예측값을 데이터 프레임으로 만들어 보기
 df_result = pd.DataFrame(result, columns=['Room_Electricity', 'Lighting', 'Fans', 
