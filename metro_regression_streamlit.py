@@ -240,6 +240,6 @@ st.caption('--------- ', unsafe_allow_html=False)
 
 import plotly.figure_factory as ff
 
-fig = px.bar(df_result)
+fig = px.bar(df_result, x='year', y='pop')
 
 st.plotly_chart(fig, use_container_width=True)
