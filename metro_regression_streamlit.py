@@ -127,7 +127,7 @@ st.subheader('LinearRegression 모델 성능')
 st.caption('--------', unsafe_allow_html=False)
 
 col1, col2 = st.columns(2)
-col1.metric(label='Variance score(r2_score)', value = np.round(r2, 3))
+col1.metric(label='Variance score(r2_score)"(1 에 근접할수록 높은성능)"', value = np.round(r2, 3))
 col2.metric(label='mean_squared_error', value = np.round(mse, 3))
 
 col3, col4 = st.columns(2)
@@ -135,7 +135,7 @@ col3.metric(label='root mean_squared_error', value = np.round(rmse, 3))
 col4.metric(label='mean_absolute_error', value = np.round(mae, 3))
 
 
-st.metric(label='mean_absolute_percentage_error', value = np.round(mape, 3))
+st.metric(label='mean_absolute_percentage_error "(0 에 근접할수록 높은성능)"', value = np.round(mape, 3))
 
 
 
