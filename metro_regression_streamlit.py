@@ -131,8 +131,8 @@ col3, col4 = st.columns(2)
 col3.metric(label='root mean_squared_error', value = np.round(rmse, 3))
 col4.metric(label='mean_absolute_error', value = np.round(mae, 3))
 
-col5 = st.columns(1)
-col5.metric(label='mean_absolute_percentage_error', value = np.round(mape, 3))
+
+st.metric(label='mean_absolute_percentage_error', value = np.round(mape, 3))
 
 
 
