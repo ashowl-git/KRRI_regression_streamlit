@@ -51,6 +51,7 @@ df_raw = pd.read_excel('data/metro_sim.xlsx')
 
 st.subheader('LinearRegression 학습 대상 파일 직접 업로드 하기')
 st.caption('업로드 하지 않아도 기본 학습 Data-set 으로 작동합니다 ', unsafe_allow_html=False)
+
 # 학습할 파일을 직접 업로드 하고 싶을때
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
@@ -101,8 +102,7 @@ lr.fit(X_train, y_train)
 # 테스트 세트로 예측해보고 예측결과를 평가하기
 y_preds = lr.predict(X_test)
 
-st.subheader('LinearRegression 학습 대상 파일 직접 업로드 하기')
-st.caption('업로드 하지 않아도 기본 학습 Data-set 으로 작동합니다 ', unsafe_allow_html=False)
+
 
 mse = mean_squared_error(y_test, y_preds)
 rmse = np.sqrt(mse)
@@ -119,9 +119,12 @@ print('MAE : {0:.3f}, MAPE : {1:.3f}'.format(mae, mape))
 # print('MSLE : {0:.3f}, RMSLE : {1:.3f}'.format(msle, rmsle))
 
 print('Variance score(r2_score) : {0:.3f}'.format(r2_score(y_test, y_preds)))
-
-
 r2 = r2_score(y_test, y_preds)
+
+
+
+st.subheader('LinearRegression 모델 성능')
+st.caption('--------', unsafe_allow_html=False)
 
 col1, col2 = st.columns(2)
 col1.metric(label='Variance score(r2_score)', value = np.round(r2, 3))
@@ -156,7 +159,9 @@ coeff = coeff.rename(columns={
     7:'Electricity_total',
 })
 # coeff
-
+st.subheader('LinearRegression 회귀계수')
+st.caption('--------', unsafe_allow_html=False)
+coeff
 
 # 회귀계수를 테이블로 만들어 보기 2 그대로 보기
 coeff2 = pd.DataFrame(np.round(lr.coef_,2), \
