@@ -23,8 +23,8 @@ import matplotlib.pyplot as plt
 import plotly.io as pio
 import plotly.express as px
 import plotly.graph_objects as go 
-import chart_studio.plotly as py
-import cufflinks as cf
+# import chart_studio.plotly as py
+# import cufflinks as cf
 # # get_ipython().run_line_magic('matplotlib', 'inline')
 
 
