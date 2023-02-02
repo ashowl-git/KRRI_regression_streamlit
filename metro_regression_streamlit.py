@@ -239,4 +239,4 @@ st.bar_chart(df_result)
 
 
 
-df_result.iplot(kind='bar')
+st.df_result.iplot(kind='bar')
