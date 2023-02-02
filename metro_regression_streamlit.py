@@ -228,7 +228,7 @@ df_result
 
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
-# import plotly.figure_factory as ff
+
 st.subheader('에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 # df_result.plot(kind='bar')
@@ -238,5 +238,8 @@ st.bar_chart(df_result)
 # trigger = st.button('Predict', on_click=predict)
 
 
+import plotly.figure_factory as ff
 
-st.df_result.iplot(kind='bar')
+fig = px.bar(df_result)
+
+st.plotly_chart(fig, use_container_width=True)
