@@ -232,7 +232,7 @@ df_result
 st.subheader('에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 # df_result.plot(kind='bar')
-st.bar_chart(df_result)
+# st.bar_chart(df_result)
 
 
 # trigger = st.button('Predict', on_click=predict)
@@ -240,6 +240,6 @@ st.bar_chart(df_result)
 
 import plotly.figure_factory as ff
 
-fig = px.bar(df_result)
+fig = px.bar(df_result, x='사용처', y='사용량')
 
 st.plotly_chart(fig, use_container_width=True)
