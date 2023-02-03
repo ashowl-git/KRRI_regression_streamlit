@@ -250,7 +250,7 @@ st.plotly_chart(fig, use_container_width=True)
 st.subheader('월별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 
-fig = px.box(df_result, x='Month', y='kW', title='제목 ', hover_data=['kW'],color='index' )
+fig = px.line(df_result, x='Month', y='kW', title='제목 ', hover_data=['kW'],color='Month' )
 fig.update_xaxes(rangeslider_visible=True)
 
 st.plotly_chart(fig, use_container_width=True)
