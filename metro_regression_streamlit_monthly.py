@@ -46,8 +46,8 @@ from sklearn.metrics import mean_absolute_percentage_error
 from sklearn.metrics import mean_squared_log_error
 
 # 학습파일 불러오기
-df_raw = pd.read_excel('data/metro_sim.xlsx')
-# df_raw.head()
+df_raw = pd.read_excel('data/metro_sim_month.xlsx')
+df_raw.head()
 
 st.subheader('LinearRegression 학습 대상 파일 직접 업로드 하기')
 st.caption('업로드 하지 않아도 기본 학습 Data-set 으로 작동합니다 ', unsafe_allow_html=False)
@@ -60,33 +60,20 @@ if uploaded_file is not None:
 
 # df_raw.columns
 
-# 독립변수컬럼
+# 독립변수컬럼 리스트
 lm_features =['ACH50', 'Lighting_power_density_', 'Chiller_COP', 'Pump_efficiency',
        'Fan_total_efficiency', 'heat_recover_effectiveness', 'AHU_economiser',
        'Occupied_floor_area', 'Floor', 'Basement', 'Ground',]
 
 
 # 종속변수들을 드랍시키고 독립변수 컬럼만 X_data에 저장
-X_data = df_raw.drop(df_raw[[
-    'Room_Electricity', 
-    'Lighting', 'Fans', 
-    'Pumps', 'Heating', 
-    'Cooling','DHW', 
-    'Electricity_total']], axis=1, inplace=False)
+X_data = df_raw[lm_features]
+# X_data
     
 X_data = X_data.astype('float')
 # 독립변수들을 드랍시키고 종속변수 컬럼만 Y_data에 저장
-Y_data = df_raw.drop(df_raw[[
-    'ACH50', 
-    'Lighting_power_density_', 
-    'Chiller_COP', 
-    'Pump_efficiency',
-    'Fan_total_efficiency', 
-    'heat_recover_effectiveness', 
-    'AHU_economiser',
-    'Occupied_floor_area', 
-    'Floor', 'Basement', 
-    'Ground',]], axis=1, inplace=False)
+Y_data = df_raw.drop(df_raw[lm_features], axis=1, inplace=False)
+Y_data
 
 # 로우 데이터 전체로 회귀모델을 만들고 싶을때
 # X_train = X_data.copy() 
