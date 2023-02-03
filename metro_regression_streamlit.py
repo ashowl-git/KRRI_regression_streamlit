@@ -218,8 +218,9 @@ df_result['Month'] = df_result['index'].str.extract(r'(\d+)')
 df_result['index'] = df_result['index'].str.slice(0,-3)
 df_result
 
-df_result.groupby(['index']).sum().plot.bar()
-df_result.groupby(['index','Month']).sum().plot()
+df_sum = df_result.groupby(['index']).sum()
+df_sum2 = df_result.groupby(['index','Month']).sum()
+df_sum2
 
 
 
@@ -237,6 +238,7 @@ st.caption('--------- ', unsafe_allow_html=False)
 
 import plotly.figure_factory as ff
 
-fig = px.bar(df_result)
+fig = px.box(df_result, x='index', y='kW', title='제목 ', hover_data=['index'],color='index' )
+fig.update_xaxes(rangeslider_visible=True)
 
 st.plotly_chart(fig, use_container_width=True)
