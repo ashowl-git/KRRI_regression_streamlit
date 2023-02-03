@@ -145,18 +145,18 @@ st.subheader('LinearRegression 회귀계수')
 st.caption('--------', unsafe_allow_html=False)
 coeff
 
-# 회귀계수를 테이블로 만들어 보기 2 그대로 보기
-coeff2 = pd.DataFrame(np.round(lr.coef_,2), \
-    columns=lm_features, 
-    index=[
-        'Room_Electricity', 
-        'Lighting', 'Fans', 
-        'Pumps', 
-        'Heating', 
-        'Cooling',
-        'DHW', 
-        'Electricity_total'])
-# coeff2
+# # 회귀계수를 테이블로 만들어 보기 2 그대로 보기
+# coeff2 = pd.DataFrame(np.round(lr.coef_,2), \
+#     columns=lm_features, 
+#     index=[
+#         'Room_Electricity', 
+#         'Lighting', 'Fans', 
+#         'Pumps', 
+#         'Heating', 
+#         'Cooling',
+#         'DHW', 
+#         'Electricity_total'])
+# # coeff2
 
 
 # Sidebar
