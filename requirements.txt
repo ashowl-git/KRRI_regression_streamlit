@@ -12,4 +12,3 @@ plotly
 matplotlib
 chart_studio
 cufflinks
-cufflinks-py
