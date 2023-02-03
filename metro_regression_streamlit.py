@@ -204,16 +204,21 @@ st.subheader('에너지 사용량 예측값')
 st.caption('좌측의 변수항목 슬라이더 조정 ', unsafe_allow_html=False)
 st.caption('--------- ', unsafe_allow_html=False)
 # 예측값을 데이터 프레임으로 만들어 보기
-df_month = pd.read_excel('data/month.xlsx')
+
+
+# df_month = pd.read_excel('data/month.xlsx')
 
 df_result = pd.DataFrame(result, columns=lm_result_features).T.rename(columns={0:'kW'})
 df_result
 df_result.reset_index(inplace=True)
-df_result = pd.concat([df_result,df_month], axis=1)
+
+# 숫자만 추출해서 행 만들기 
+# 숫자+'호' 문자열 포함한 행 추출해서 행 만들기 df['floor'] = df['addr'].str.extract(r'(\d+호)')
+df_result['Month'] = df_result['index'].str.extract(r'(\d+)')
+df_result['index'] = df_result['index'].str.slice(0,-3)
 df_result
 
-
-
+df_result.groupby(['index']).sum().plot.bar()
 
 
 
