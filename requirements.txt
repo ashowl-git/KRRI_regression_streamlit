@@ -11,3 +11,4 @@ openpyxl
 plotly
 matplotlib
 chart_studio
+cufflinks
