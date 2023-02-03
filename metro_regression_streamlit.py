@@ -227,18 +227,20 @@ df_sum2
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
 
-st.subheader('에너지 사용량 예측값 그래프')
+st.subheader('사용처별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
-# df_result.plot(kind='bar')
-# st.bar_chart(df_result)
-
-
-# trigger = st.button('Predict', on_click=predict)
-
-
-import plotly.figure_factory as ff
 
 fig = px.box(df_result, x='index', y='kW', title='제목 ', hover_data=['index'],color='index' )
+fig.update_xaxes(rangeslider_visible=True)
+
+st.plotly_chart(fig, use_container_width=True)
+
+# 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
+
+st.subheader('월별 에너지 사용량 예측값 그래프')
+st.caption('--------- ', unsafe_allow_html=False)
+
+fig = px.box(df_result, x='index', y='kW', title='제목 ', hover_data=['index'],color='Month' )
 fig.update_xaxes(rangeslider_visible=True)
 
 st.plotly_chart(fig, use_container_width=True)
