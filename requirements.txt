@@ -10,3 +10,4 @@ streamlit
 openpyxl
 plotly
 matplotlib
+chart_studio
