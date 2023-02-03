@@ -209,7 +209,7 @@ st.caption('--------- ', unsafe_allow_html=False)
 # df_month = pd.read_excel('data/month.xlsx')
 
 df_result = pd.DataFrame(result, columns=lm_result_features).T.rename(columns={0:'kW'})
-df_result
+# df_result
 df_result.reset_index(inplace=True)
 
 # 숫자만 추출해서 행 만들기 
@@ -218,9 +218,9 @@ df_result['Month'] = df_result['index'].str.extract(r'(\d+)')
 df_result['index'] = df_result['index'].str.slice(0,-3)
 df_result
 
-df_sum = df_result.groupby(['index']).sum()
-df_sum2 = df_result.groupby(['index','Month']).sum()
-df_sum2
+# df_sum = df_result.groupby(['index']).sum()
+# df_sum2 = df_result.groupby(['index','Month']).sum()
+# df_sum2
 
 
 
