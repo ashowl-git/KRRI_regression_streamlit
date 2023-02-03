@@ -219,7 +219,7 @@ df_result['index'] = df_result['index'].str.slice(0,-3)
 df_result
 
 df_result.groupby(['index']).sum().plot.bar()
-df_result.groupby(['index','Month']).sum().iplot()
+df_result.groupby(['index','Month']).sum().plot()
 
 
 
