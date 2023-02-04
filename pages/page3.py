@@ -189,7 +189,7 @@ coeff
 
 # Sidebar
 # Header of Specify Input Parameters
-st.sidebar.header('Specify Input Parameters')
+st.sidebar.header('Specify Input Parameters_변경후')
 
 def user_input_features2():
     # ACH50 = st.sidebar.slider('ACH50', X_data.ACH50.min(), X_data.ACH50.max(), X_data.ACH50.mean())
