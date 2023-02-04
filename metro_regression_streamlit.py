@@ -279,7 +279,7 @@ def user_input_features2():
 
 df2 = user_input_features2()
 
-result = lr2.predict(df2)
+# result = lr2.predict(df2)
 
 ##################################################################################################
 
