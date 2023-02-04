@@ -135,7 +135,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 # 학습시키기 모델이름 lr에 저장
 lr = LinearRegression()
-lr2 = LinearRegression()
+lr2 = lr.copy()
 
 lr.fit(X_train, y_train)
 
