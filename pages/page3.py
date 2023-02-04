@@ -191,7 +191,7 @@ coeff
 # Header of Specify Input Parameters
 st.sidebar.header('Specify Input Parameters')
 
-def user_input_features():
+def user_input_features2():
     # ACH50 = st.sidebar.slider('ACH50', X_data.ACH50.min(), X_data.ACH50.max(), X_data.ACH50.mean())
     ACH50_2 = st.sidebar.slider('침기율', 0, 50, 25)
     Lighting_power_density__2 = st.sidebar.slider('Lighting_power_density_', 3, 20, 7)
@@ -216,10 +216,10 @@ def user_input_features():
             'Floor': Floor_2,
             'Basement': Basement_2,
             'Ground': Ground_2,}
-    features = pd.DataFrame(data, index=[0])
-    return features
+    features2 = pd.DataFrame(data, index=[0])
+    return features2
 
-df2 = user_input_features()
+df2 = user_input_features2()
 
 result2 = lr2.predict(df2)
 # result
