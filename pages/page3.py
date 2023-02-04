@@ -237,7 +237,7 @@ df_result['index'] = df_result['index'].str.slice(0,-3)
 # df_sum = df_result.groupby(['index']).sum()
 # df_sum2 = df_result.groupby(['index','Month']).sum()
 # df_sum2
-df_result.to_excel('result2.xlsx',engine='xlsxwriter')
+# df_result.to_excel('result2.xlsx',engine='xlsxwriter')
 
 
 
