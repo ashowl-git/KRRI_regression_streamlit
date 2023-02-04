@@ -334,7 +334,8 @@ df_result2['Month'] = df_result2['index2'].str.extract(r'(\d+)')
 # df_result2['index'] = df_result2['index2'].str.slice(0,-3)
 df_result2
 
-
+df_result_merge = pd.merge(df_result,df_result2)
+df_result_merge
 # df_sum = df_result.groupby(['index']).sum()
 # df_sum2 = df_result.groupby(['index','Month']).sum()
 # df_sum2
