@@ -206,7 +206,7 @@ def user_input_features():
 
 df = user_input_features()
 
-result = lr.predict(df)
+result2 = lr2.predict(df)
 # result
 ####################################################################################################
 
@@ -229,15 +229,15 @@ st.caption('--------- ', unsafe_allow_html=False)
 
 # df_month = pd.read_excel('data/month.xlsx')
 
-df_result = pd.DataFrame(result, columns=lm_result_features).T.rename(columns={0:'kW'})
+df_result2 = pd.DataFrame(result2, columns=lm_result_features).T.rename(columns={0:'kW'})
 # df_result
-df_result.reset_index(inplace=True)
+df_result2.reset_index(inplace=True)
 
 # 숫자만 추출해서 행 만들기 
 # 숫자+'호' 문자열 포함한 행 추출해서 행 만들기 df['floor'] = df['addr'].str.extract(r'(\d+호)')
-df_result['Month'] = df_result['index'].str.extract(r'(\d+)')
-df_result['index'] = df_result['index'].str.slice(0,-3)
-
+df_result2['Month'] = df_result2['index'].str.extract(r'(\d+)')
+df_result2['index'] = df_result2['index'].str.slice(0,-3)
+df_result2
 # df_sum = df_result.groupby(['index']).sum()
 # df_sum2 = df_result.groupby(['index','Month']).sum()
 # df_sum2
@@ -251,7 +251,7 @@ df_result['index'] = df_result['index'].str.slice(0,-3)
 st.subheader('사용처별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 
-fig = px.box(df_result, x='index', y='kW', title='제목 ', hover_data=['index'],color='index' )
+fig = px.box(df_result2, x='index', y='kW', title='제목 ', hover_data=['index'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 
 st.plotly_chart(fig, use_container_width=True)
@@ -262,7 +262,7 @@ st.plotly_chart(fig, use_container_width=True)
 st.subheader('월별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 
-fig = px.bar(df_result, x='Month', y='kW', title='제목 ', hover_data=['kW'],color='index' )
+fig = px.bar(df_result2, x='Month', y='kW', title='제목 ', hover_data=['kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 
 st.plotly_chart(fig, use_container_width=True)
@@ -274,7 +274,7 @@ st.plotly_chart(fig, use_container_width=True)
 st.subheader('월별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 
-fig = px.line(df_result, x='Month', y='kW', title='제목 ', hover_data=['kW'],color='index' )
+fig = px.line(df_result2, x='Month', y='kW', title='제목 ', hover_data=['kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 
 st.plotly_chart(fig, use_container_width=True)
