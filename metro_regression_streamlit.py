@@ -247,23 +247,23 @@ result = lr.predict(df)
 
 # result
 ####################################################################################################
-st.sidebar.header('Specify Input Parameters_ALT')
+st.sidebar.header('Specify Input Parameters_변경후')
 
 def user_input_features2():
     # ACH50 = st.sidebar.slider('ACH50', X_data.ACH50.min(), X_data.ACH50.max(), X_data.ACH50.mean())
-    ACH50_2 = st.sidebar.slider('침기율_2', 0, 50, 25)
-    Lighting_power_density__2 = st.sidebar.slider('Lighting_power_density__2', 3, 20, 7)
-    Chiller_COP_2 = st.sidebar.slider('Chiller_COP_2', 4, 9, 6)
-    Pump_efficiency_2 = st.sidebar.slider('Pump_efficiency_2', 0.0, 1.0, 0.7)
-    Fan_total_efficiency_2 = st.sidebar.slider('Fan_total_efficiency_2', 0.0, 1.0, 0.7)
-    heat_recover_effectiveness_2 = st.sidebar.slider('heat_recover_effectiveness_2', 0.0, 1.0, 0.7)
-    AHU_economiser_2 = st.sidebar.select_slider('AHU_economiser_2', options=[0, 1])
-    Occupied_floor_area_2 = st.sidebar.slider('Occupied_floor_area_2', 5000, 10000, 6000)
-    Floor_2 = st.sidebar.select_slider('Floor 규모선택_2', options=[1,2,3])
-    Basement_2 = st.sidebar.select_slider('지상유무_2', options=[0, 1])
-    Ground_2 = st.sidebar.select_slider('지하유무_2', options=[0, 1])
+    ACH50_2 = st.sidebar.slider('침기율', 0, 50, 25)
+    Lighting_power_density__2 = st.sidebar.slider('Lighting_power_density_', 3, 20, 7)
+    Chiller_COP_2 = st.sidebar.slider('Chiller_COP', 4, 9, 6)
+    Pump_efficiency_2 = st.sidebar.slider('Pump_efficiency', 0.0, 1.0, 0.7)
+    Fan_total_efficiency_2 = st.sidebar.slider('Fan_total_efficiency', 0.0, 1.0, 0.7)
+    heat_recover_effectiveness_2 = st.sidebar.slider('heat_recover_effectiveness', 0.0, 1.0, 0.7)
+    AHU_economiser_2 = st.sidebar.select_slider('AHU_economiser', options=[0, 1])
+    Occupied_floor_area_2 = st.sidebar.slider('Occupied_floor_area', 5000, 10000, 6000)
+    Floor_2 = st.sidebar.select_slider('Floor 규모선택', options=[1,2,3])
+    Basement_2 = st.sidebar.select_slider('지상유무', options=[0, 1])
+    Ground_2 = st.sidebar.select_slider('지하유무', options=[0, 1])
 
-    data2 = {'ACH50_2': ACH50_2,
+    data = {'ACH50_2': ACH50_2,
             'Lighting_power_density__2': Lighting_power_density__2,
             'Chiller_COP_2': Chiller_COP_2,
             'Pump_efficiency_2': Pump_efficiency_2,
@@ -274,12 +274,12 @@ def user_input_features2():
             'Floor_2': Floor_2,
             'Basement_2': Basement_2,
             'Ground_2': Ground_2,}
-    features2 = pd.DataFrame(data2, index=[0])
+    features2 = pd.DataFrame(data, index=[0])
     return features2
 
 df2 = user_input_features2()
 
-# result = lr2.predict(df2)
+result2 = lr2.predict(df2)
 
 ##################################################################################################
 
