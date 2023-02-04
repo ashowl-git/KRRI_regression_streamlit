@@ -98,10 +98,10 @@ X_train, X_test, y_train, y_test = train_test_split(
 # 학습시키기 모델이름 lr에 저장
 lr = LinearRegression()
 lr2 = LinearRegression()
-lr.fit(X_train, y_train)
+lr2.fit(X_train, y_train)
 
 # 테스트 세트로 예측해보고 예측결과를 평가하기
-y_preds = lr.predict(X_test)
+y_preds = lr2.predict(X_test)
 
 
 
@@ -141,13 +141,13 @@ st.metric(label='mean_absolute_percentage_error', value = np.round(mape, 3))
 
 
 
-print('절편값:',lr.intercept_)
-print('회귀계수값:',np.round(lr.coef_, 1))
+print('절편값:',lr2.intercept_)
+print('회귀계수값:',np.round(lr2.coef_, 1))
 # print('회귀계수값:',lr.coef_)
 
 
 # 회귀계수를 테이블로 만들어 보기 1 전치하여 세로로 보기
-coeff = pd.DataFrame(np.round(lr.coef_,2), columns=lm_features).T
+coeff = pd.DataFrame(np.round(lr2.coef_,2), columns=lm_features).T
 # coeff = coeff.reset_index()
 # coeff
 coeff.columns = lm_result_features
