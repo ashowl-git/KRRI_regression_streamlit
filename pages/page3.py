@@ -233,7 +233,7 @@ df_result.reset_index(inplace=True)
 # 숫자+'호' 문자열 포함한 행 추출해서 행 만들기 df['floor'] = df['addr'].str.extract(r'(\d+호)')
 df_result['Month'] = df_result['index'].str.extract(r'(\d+)')
 df_result['index'] = df_result['index'].str.slice(0,-3)
-df_result.to_excel('data/base.xlsx')
+df_result.to_excel('base.xlsx')
 
 # df_sum = df_result.groupby(['index']).sum()
 # df_sum2 = df_result.groupby(['index','Month']).sum()
