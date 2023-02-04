@@ -367,10 +367,11 @@ st.caption('--------- ', unsafe_allow_html=False)
 
 fig = px.bar(df_result_merge, x='Month', y='kW', title='제목 ', hover_data=['kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
-
 st.plotly_chart(fig, use_container_width=True)
 
-
+fig = px.bar(df_result_merge, x='Month', y=['kW','kW_alt'], title='제목 ', hover_data=['kW'],color='index' )
+fig.update_xaxes(rangeslider_visible=True)
+st.plotly_chart(fig, use_container_width=True)
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
 
