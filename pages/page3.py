@@ -279,6 +279,3 @@ fig.update_xaxes(rangeslider_visible=True)
 
 st.plotly_chart(fig, use_container_width=True)
 
-
-def result2() :
-    return df_result
