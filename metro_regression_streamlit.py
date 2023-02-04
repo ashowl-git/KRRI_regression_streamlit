@@ -315,14 +315,25 @@ st.caption('--------- ', unsafe_allow_html=False)
 # df_month = pd.read_excel('data/month.xlsx')
 
 df_result = pd.DataFrame(result, columns=lm_result_features).T.rename(columns={0:'kW'})
+df_result2 = pd.DataFrame(result2, columns=lm_result_features2).T.rename(columns={0:'kW'})
+
 # df_result
 df_result.reset_index(inplace=True)
+df_result2.reset_index(inplace=True)
+
 
 # 숫자만 추출해서 행 만들기 
 # 숫자+'호' 문자열 포함한 행 추출해서 행 만들기 df['floor'] = df['addr'].str.extract(r'(\d+호)')
 df_result['Month'] = df_result['index'].str.extract(r'(\d+)')
-df_result['index'] = df_result['index'].str.slice(0,-3)
+# df_result['index'] = df_result['index'].str.slice(0,-3)
 df_result
+
+
+df_result2.rename(columns={'index':'index2'},inplace=True)
+df_result2['Month'] = df_result2['index2'].str.extract(r'(\d+)')
+# df_result2['index'] = df_result2['index2'].str.slice(0,-3)
+df_result2
+
 
 # df_sum = df_result.groupby(['index']).sum()
 # df_sum2 = df_result.groupby(['index','Month']).sum()
