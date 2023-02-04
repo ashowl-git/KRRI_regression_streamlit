@@ -45,6 +45,49 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_percentage_error
 from sklearn.metrics import mean_squared_log_error
 
+
+
+import streamlit as st
+
+def main_page():
+    st.markdown("# Main page 🎈")
+    st.sidebar.markdown("# Main page 🎈")
+
+def page2():
+    st.markdown("# Page 2 ❄️")
+    st.sidebar.markdown("# Page 2 ❄️")
+
+def page3():
+    st.markdown("# Page 3 🎉")
+    st.sidebar.markdown("# Page 3 🎉")
+
+page_names_to_funcs = {
+    "Main Page": main_page,
+    "Page 2": page2,
+    "Page 3": page3,
+}
+
+selected_page = st.sidebar.selectbox("Select a page", page_names_to_funcs.keys())
+page_names_to_funcs[selected_page]()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 학습파일 불러오기
 df_raw = pd.read_excel('data/metro_sim_month.xlsx')
 # df_raw.head()
@@ -64,7 +107,6 @@ if uploaded_file is not None:
 lm_features =['ACH50', 'Lighting_power_density_', 'Chiller_COP', 'Pump_efficiency',
        'Fan_total_efficiency', 'heat_recover_effectiveness', 'AHU_economiser',
        'Occupied_floor_area', 'Floor', 'Basement', 'Ground',]
-
 
 # 종속변수들을 드랍시키고 독립변수 컬럼만 X_data에 저장
 X_data = df_raw[lm_features]
