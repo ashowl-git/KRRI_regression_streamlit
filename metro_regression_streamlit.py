@@ -57,36 +57,6 @@ def page2():
     st.markdown("# Page 2 ❄️")
     st.sidebar.markdown("# Page 2 ❄️")
 
-def page3():
-    st.markdown("# Page 3 🎉")
-    st.sidebar.markdown("# Page 3 🎉")
-
-page_names_to_funcs = {
-    "Main Page": main_page,
-    "Page 2": page2,
-    "Page 3": page3,
-}
-
-selected_page = st.sidebar.selectbox("Select a page", page_names_to_funcs.keys())
-page_names_to_funcs[selected_page]()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # 학습파일 불러오기
 df_raw = pd.read_excel('data/metro_sim_month.xlsx')
@@ -311,4 +281,44 @@ fig = px.line(df_result, x='Month', y='kW', title='제목 ', hover_data=['kW'],c
 fig.update_xaxes(rangeslider_visible=True)
 
 st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+
+
+
+
+
+def page3():
+    st.markdown("# Page 3 🎉")
+    st.sidebar.markdown("# Page 3 🎉")
+
+page_names_to_funcs = {
+    "Main Page": main_page,
+    "Page 2": page2,
+    "Page 3": page3,
+}
+
+selected_page = st.sidebar.selectbox("Select a page", page_names_to_funcs.keys())
+page_names_to_funcs[selected_page]()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
