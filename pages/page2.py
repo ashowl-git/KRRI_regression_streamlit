@@ -52,7 +52,7 @@ import streamlit as st
 
 
 # 학습파일 불러오기
-df_raw = pd.read_excel('../data/metro_sim_month.xlsx')
+df_raw = pd.read_excel('data/metro_sim_month.xlsx')
 # df_raw.head()
 
 st.subheader('LinearRegression 학습 대상 파일 직접 업로드 하기')
