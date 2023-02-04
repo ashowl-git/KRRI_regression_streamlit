@@ -265,7 +265,7 @@ def user_input_features2():
     Basement_2 = st.sidebar.select_slider('지상유무', options=[0, 1])
     Ground_2 = st.sidebar.select_slider('지하유무', options=[0, 1])
 
-    data = {'ACH50_2': ACH50_2,
+    data2 = {'ACH50_2': ACH50_2,
             'Lighting_power_density__2': Lighting_power_density__2,
             'Chiller_COP_2': Chiller_COP_2,
             'Pump_efficiency_2': Pump_efficiency_2,
@@ -276,7 +276,7 @@ def user_input_features2():
             'Floor_2': Floor_2,
             'Basement_2': Basement_2,
             'Ground_2': Ground_2,}
-    features2 = pd.DataFrame(data, index=[0])
+    features2 = pd.DataFrame(data2, index=[0])
     return features2
 
 df2 = user_input_features2()
