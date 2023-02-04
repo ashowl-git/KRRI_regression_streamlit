@@ -150,8 +150,9 @@ lr2 = LinearRegression()
 lr.fit(X_train, y_train)
 lr2.fit(X_train2, y_train2)
 # 테스트 세트로 예측해보고 예측결과를 평가하기
+
 y_preds = lr.predict(X_test)
-y_preds2 = lr.predict(X_test2)
+y_preds2 = lr2.predict(X_test2)
 
 
 mse = mean_squared_error(y_test, y_preds)
