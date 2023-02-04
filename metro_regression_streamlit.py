@@ -88,6 +88,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 # 학습시키기 모델이름 lr에 저장
 lr = LinearRegression()
+lr2 = LinearRegression()
 lr.fit(X_train, y_train)
 
 # 테스트 세트로 예측해보고 예측결과를 평가하기
@@ -229,7 +230,7 @@ def user_input_features2():
 
 df2 = user_input_features2()
 
-result = lr.predict(df2)
+result2 = lr2.predict(df2)
 
 ##################################################################################################
 
