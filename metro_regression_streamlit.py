@@ -355,7 +355,7 @@ fig = px.box(df_result_merge, x='index', y=['kW'], title='BASE ', hover_data=['i
 fig.update_xaxes(rangeslider_visible=True)
 st.plotly_chart(fig, use_container_width=True)
 
-fig = px.box(df_result_merge, x='index', y=['kW_alt'], title='ALT', hover_data=['index'],color='index' )
+fig = px.box(df_result_merge, x='index', y='kW_alt', title='ALT', hover_data=['index'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 st.plotly_chart(fig, use_container_width=True)
 
@@ -365,11 +365,11 @@ st.plotly_chart(fig, use_container_width=True)
 st.subheader('월별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 
-fig = px.bar(df_result_merge, x='Month', y='kW', title='제목 ', hover_data=['kW'],color='index' )
+fig = px.bar(df_result_merge, x='Month', y='kW', title='BASE ', hover_data=['kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 st.plotly_chart(fig, use_container_width=True)
 
-fig = px.bar(df_result_merge, x='Month', y=['kW_alt','kW'], title='제목 ', hover_data=['kW'],color='index' )
+fig = px.bar(df_result_merge, x='Month', y='kW_alt', title='ALT ', hover_data=['kW_alt'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 st.plotly_chart(fig, use_container_width=True)
 
@@ -378,9 +378,12 @@ st.plotly_chart(fig, use_container_width=True)
 st.subheader('월별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 
-fig = px.line(df_result_merge, x='Month', y='kW', title='제목 ', hover_data=['kW'],color='index' )
+fig = px.line(df_result_merge, x='Month', y='kW', title='BASE ', hover_data=['kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
+st.plotly_chart(fig, use_container_width=True)
 
+fig = px.line(df_result_merge, x='Month', y='kW_alt', title='ALT ', hover_data=['kW_alt'],color='index' )
+fig.update_xaxes(rangeslider_visible=True)
 st.plotly_chart(fig, use_container_width=True)
 
 
