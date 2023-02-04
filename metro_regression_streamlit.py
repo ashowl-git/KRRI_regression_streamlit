@@ -187,15 +187,18 @@ print('회귀계수값:',np.round(lr.coef_, 1))
 
 # 회귀계수를 테이블로 만들어 보기 1 전치하여 세로로 보기
 coeff = pd.DataFrame(np.round(lr.coef_,2), columns=lm_features).T
+coeff2 = pd.DataFrame(np.round(lr.coef_,2), columns=lm_features2).T
 # coeff = coeff.reset_index()
 # coeff
 coeff.columns = lm_result_features
+coeff2.columns = lm_result_features2
 # coeff = coeff.reset_index()
 # coeff = coeff.rename(columns=lm_result_features)
 # coeff
 st.subheader('LinearRegression 회귀계수')
 st.caption('--------', unsafe_allow_html=False)
 coeff
+coeff2
 
 # # 회귀계수를 테이블로 만들어 보기 2 그대로 보기
 # coeff2 = pd.DataFrame(np.round(lr.coef_,2), \
@@ -274,7 +277,8 @@ def user_input_features2():
             'Floor_2': Floor_2,
             'Basement_2': Basement_2,
             'Ground_2': Ground_2,}
-    features2 = pd.DataFrame(data2, index=[1])
+            
+    features2 = pd.DataFrame(data2, index=[0])
     return features2
 
 df2 = user_input_features2()
