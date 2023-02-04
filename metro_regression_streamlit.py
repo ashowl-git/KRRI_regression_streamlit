@@ -274,7 +274,7 @@ def user_input_features2():
             'Floor_2': Floor_2,
             'Basement_2': Basement_2,
             'Ground_2': Ground_2,}
-    features2 = pd.DataFrame(data2, index=[0])
+    features2 = pd.DataFrame(data2, index=[1])
     return features2
 
 df2 = user_input_features2()
