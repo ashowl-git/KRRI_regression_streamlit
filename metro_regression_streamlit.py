@@ -81,7 +81,10 @@ lm_result_features = Y_data.columns.tolist()
 # y_train = Y_data.copy()
 
 # 학습데이터에서 일부를 분리하여 테스트세트를 만들어 모델을 평가 하고 싶을때
-X_train, X_test, y_train, y_test = train_test_split(X_data, Y_data , test_size=0.2, random_state=150)
+X_train, X_test, y_train, y_test = train_test_split(
+  X_data, Y_data , 
+  test_size=0.2, 
+  random_state=150)
 
 # 학습시키기 모델이름 lr에 저장
 lr = LinearRegression()
