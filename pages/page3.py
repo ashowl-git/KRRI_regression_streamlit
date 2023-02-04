@@ -205,17 +205,17 @@ def user_input_features2():
     Basement_2 = st.sidebar.select_slider('지상유무', options=[0, 1])
     Ground_2 = st.sidebar.select_slider('지하유무', options=[0, 1])
 
-    data = {'ACH50': ACH50_2,
-            'Lighting_power_density_': Lighting_power_density__2,
-            'Chiller_COP': Chiller_COP_2,
-            'Pump_efficiency': Pump_efficiency_2,
-            'Fan_total_efficiency': Fan_total_efficiency_2,
-            'heat_recover_effectiveness': heat_recover_effectiveness_2,
-            'AHU_economiser': AHU_economiser_2,
-            'Occupied_floor_area': Occupied_floor_area_2,
-            'Floor': Floor_2,
-            'Basement': Basement_2,
-            'Ground': Ground_2,}
+    data = {'ACH50_2': ACH50_2,
+            'Lighting_power_density__2': Lighting_power_density__2,
+            'Chiller_COP_2': Chiller_COP_2,
+            'Pump_efficiency_2': Pump_efficiency_2,
+            'Fan_total_efficiency_2': Fan_total_efficiency_2,
+            'heat_recover_effectiveness_2': heat_recover_effectiveness_2,
+            'AHU_economiser_2': AHU_economiser_2,
+            'Occupied_floor_area_2': Occupied_floor_area_2,
+            'Floor_2': Floor_2,
+            'Basement_2': Basement_2,
+            'Ground_2': Ground_2,}
     features2 = pd.DataFrame(data, index=[0])
     return features2
 
