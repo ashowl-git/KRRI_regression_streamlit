@@ -329,7 +329,7 @@ df_result['Month'] = df_result['index'].str.extract(r'(\d+)')
 df_result
 
 
-# df_result2.rename(columns={'index':'index2'},inplace=True)
+df_result2.rename(columns={'kW':'kW_alt'},inplace=True)
 # df_result2['Month'] = df_result2['index'].str.extract(r'(\d+)')
 # df_result2['index'] = df_result2['index2'].str.slice(0,-3)
 df_result2
