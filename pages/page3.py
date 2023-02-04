@@ -56,8 +56,8 @@ import xlsxwriter
 
 
 # 학습파일 불러오기
-df_raw = pd.read_excel('data/metro_sim_month.xlsx')
-# df_raw.head()
+df_raw2 = pd.read_excel('data/metro_sim_month.xlsx')
+df_raw2.head()
 
 st.subheader('LinearRegression 학습 대상 파일 직접 업로드 하기')
 st.caption('업로드 하지 않아도 기본 학습 Data-set 으로 작동합니다 ', unsafe_allow_html=False)
@@ -65,8 +65,8 @@ st.caption('업로드 하지 않아도 기본 학습 Data-set 으로 작동합�
 # 학습할 파일을 직접 업로드 하고 싶을때
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
-  df_raw = pd.read_excel(uploaded_file)
-  st.write(df_raw)
+  df_raw2 = pd.read_excel(uploaded_file)
+  st.write(df_raw2)
 
 # df_raw.columns
 
@@ -76,12 +76,12 @@ lm_features =['ACH50', 'Lighting_power_density_', 'Chiller_COP', 'Pump_efficienc
        'Occupied_floor_area', 'Floor', 'Basement', 'Ground',]
 
 # 종속변수들을 드랍시키고 독립변수 컬럼만 X_data에 저장
-X_data = df_raw[lm_features]
+X_data = df_raw2[lm_features]
 # X_data
     
 X_data = X_data.astype('float')
 # 독립변수들을 드랍시키고 종속변수 컬럼만 Y_data에 저장
-Y_data = df_raw.drop(df_raw[lm_features], axis=1, inplace=False)
+Y_data = df_raw2.drop(df_raw2[lm_features], axis=1, inplace=False)
 lm_result_features = Y_data.columns.tolist()
 # lm_result_features
 
@@ -204,9 +204,9 @@ def user_input_features():
     features = pd.DataFrame(data, index=[0])
     return features
 
-df = user_input_features()
+df2 = user_input_features()
 
-result2 = lr2.predict(df)
+result2 = lr2.predict(df2)
 # result
 ####################################################################################################
 
