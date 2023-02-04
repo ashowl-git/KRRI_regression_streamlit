@@ -138,7 +138,7 @@ lr = LinearRegression()
 lr2 = LinearRegression()
 
 lr.fit(X_train, y_train)
-
+lr2.fit(X_train, y_train)
 # 테스트 세트로 예측해보고 예측결과를 평가하기
 y_preds = lr.predict(X_test)
 
@@ -279,7 +279,7 @@ def user_input_features2():
 
 df2 = user_input_features2()
 
-result = lr.predict(df2)
+result = lr2.predict(df2)
 
 ##################################################################################################
 
