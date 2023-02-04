@@ -213,7 +213,7 @@ coeff
 
 # Sidebar
 # Header of Specify Input Parameters
-st.sidebar.header('Specify Input Parameters')
+st.sidebar.header('Specify Input Parameters_BASE')
 
 def user_input_features():
     # ACH50 = st.sidebar.slider('ACH50', X_data.ACH50.min(), X_data.ACH50.max(), X_data.ACH50.mean())
@@ -248,7 +248,7 @@ df = user_input_features()
 result = lr.predict(df)
 # result
 ####################################################################################################
-st.sidebar.header('Specify Input Parameters_변경후')
+st.sidebar.header('Specify Input Parameters_ALT')
 
 def user_input_features2():
     # ACH50 = st.sidebar.slider('ACH50', X_data.ACH50.min(), X_data.ACH50.max(), X_data.ACH50.mean())
