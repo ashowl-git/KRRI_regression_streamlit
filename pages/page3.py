@@ -29,6 +29,8 @@ from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 cf.go_offline()
 
 
+
+
 # 사이킷런 라이브러리 불러오기 _ 통계, 학습 테스트세트 분리, 선형회귀등
 from scipy import stats
 from sklearn.model_selection import train_test_split
@@ -42,6 +44,8 @@ from sklearn.metrics import mean_squared_log_error
 
 
 import streamlit as st
+import xlsxwriter
+
 
 
 
@@ -237,7 +241,8 @@ df_result['index'] = df_result['index'].str.slice(0,-3)
 # df_sum = df_result.groupby(['index']).sum()
 # df_sum2 = df_result.groupby(['index','Month']).sum()
 # df_sum2
-# df_result.to_excel('result2.xlsx',engine='xlsxwriter')
+
+df_result.to_excel('result2.xlsx',engine='xlsxwriter')
 
 
 
