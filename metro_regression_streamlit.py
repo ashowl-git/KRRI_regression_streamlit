@@ -115,12 +115,17 @@ lm_features2 =['ACH50_2', 'Lighting_power_density__2', 'Chiller_COP_2', 'Pump_ef
 
 # 종속변수들을 드랍시키고 독립변수 컬럼만 X_data에 저장
 X_data = df_raw[lm_features]
+X_data2 = df_raw2[lm_features2]
 # X_data
     
 X_data = X_data.astype('float')
+X_data2 = X_data2.astype('float')
 # 독립변수들을 드랍시키고 종속변수 컬럼만 Y_data에 저장
 Y_data = df_raw.drop(df_raw[lm_features], axis=1, inplace=False)
+Y_data2 = df_raw2.drop(df_raw2[lm_features2], axis=1, inplace=False)
 lm_result_features = Y_data.columns.tolist()
+lm_result_features2 = Y_data2.columns.tolist()
+
 # lm_result_features
 
 # 로우 데이터 전체로 회귀모델을 만들고 싶을때
@@ -133,15 +138,20 @@ X_train, X_test, y_train, y_test = train_test_split(
   test_size=0.2, 
   random_state=150)
 
+X_train2, X_test2, y_train2, y_test2 = train_test_split(
+  X_data2, Y_data2 , 
+  test_size=0.2, 
+  random_state=150)
+
 # 학습시키기 모델이름 lr에 저장
 lr = LinearRegression()
 lr2 = LinearRegression()
 
 lr.fit(X_train, y_train)
-lr2.fit(X_train, y_train)
+lr2.fit(X_train2, y_train2)
 # 테스트 세트로 예측해보고 예측결과를 평가하기
 y_preds = lr.predict(X_test)
-
+y_preds2 = lr.predict(X_test2)
 
 
 mse = mean_squared_error(y_test, y_preds)
