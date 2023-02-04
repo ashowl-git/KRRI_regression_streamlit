@@ -227,7 +227,7 @@ def user_input_features2():
     features = pd.DataFrame(data, index=[0])
     return features
 
-df2 = user_input_features()
+df2 = user_input_features2()
 
 result = lr.predict(df2)
 
