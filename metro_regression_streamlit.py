@@ -73,7 +73,7 @@ page_names_to_funcs[selected_page]()
 
 from pages import page3
 
-page3.
+page3.result2()
 
 
 
