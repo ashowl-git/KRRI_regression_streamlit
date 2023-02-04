@@ -256,5 +256,5 @@ st.caption('--------- ', unsafe_allow_html=False)
 fig = px.line(df_result, x='Month', y='kW', title='제목 ', hover_data=['kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, use_container_width=False)
 
