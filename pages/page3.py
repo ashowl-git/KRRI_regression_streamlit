@@ -44,7 +44,7 @@ from sklearn.metrics import mean_squared_log_error
 
 
 import streamlit as st
-import xlsxwriter
+# import xlsxwriter
 
 
 
@@ -56,7 +56,7 @@ import xlsxwriter
 
 
 # 학습파일 불러오기
-df_raw2 = pd.read_excel('data/metro_sim_month.xlsx')
+df_raw2 = pd.read_excel('../data/metro_sim_month.xlsx')
 df_raw2.head()
 
 st.subheader('LinearRegression 학습 대상 파일 직접 업로드 하기')
@@ -70,19 +70,34 @@ if uploaded_file is not None:
 
 # df_raw.columns
 
+df_raw2.rename(columns={
+    'ACH50':'ACH50_2',
+    'Lighting_power_density_':'Lighting_power_density__2',
+    'Chiller_COP':'Chiller_COP_2',
+    'Pump_efficiency':'Pump_efficiency_2',
+    'Fan_total_efficiency':'Fan_total_efficiency_2',
+    'heat_recover_effectiveness':'heat_recover_effectiveness_2',
+    'AHU_economiser':'AHU_economiser_2',
+    'Occupied_floor_area':'Occupied_floor_area_2',
+    'Floor':'Floor_2',
+    'Basement':'Basement_2',
+    'Ground':'Ground_2',
+    },inplace=True)
+
+
 # 독립변수컬럼 리스트
-lm_features =['ACH50', 'Lighting_power_density_', 'Chiller_COP', 'Pump_efficiency',
-       'Fan_total_efficiency', 'heat_recover_effectiveness', 'AHU_economiser',
-       'Occupied_floor_area', 'Floor', 'Basement', 'Ground',]
+lm_features2 =['ACH50_2', 'Lighting_power_density__2', 'Chiller_COP_2', 'Pump_efficiency_2',
+       'Fan_total_efficiency_2', 'heat_recover_effectiveness_2', 'AHU_economiser_2',
+       'Occupied_floor_area_2', 'Floor_2', 'Basement_2', 'Ground_2',]
 
 # 종속변수들을 드랍시키고 독립변수 컬럼만 X_data에 저장
-X_data = df_raw2[lm_features]
+X_data = df_raw2[lm_features2]
 # X_data
     
 X_data = X_data.astype('float')
 # 독립변수들을 드랍시키고 종속변수 컬럼만 Y_data에 저장
-Y_data = df_raw2.drop(df_raw2[lm_features], axis=1, inplace=False)
-lm_result_features = Y_data.columns.tolist()
+Y_data = df_raw2.drop(df_raw2[lm_features2], axis=1, inplace=False)
+lm_result_features2 = Y_data.columns.tolist()
 # lm_result_features
 
 # 로우 데이터 전체로 회귀모델을 만들고 싶을때
@@ -91,12 +106,12 @@ lm_result_features = Y_data.columns.tolist()
 
 # 학습데이터에서 일부를 분리하여 테스트세트를 만들어 모델을 평가 하고 싶을때
 X_train, X_test, y_train, y_test = train_test_split(
-  X_data, Y_data , 
-  test_size=0.1, 
+  X_data, Y_data, 
+  test_size=0.2, 
   random_state=150)
 
 # 학습시키기 모델이름 lr에 저장
-lr = LinearRegression()
+# lr = LinearRegression()
 lr2 = LinearRegression()
 lr2.fit(X_train, y_train)
 
@@ -147,10 +162,10 @@ print('회귀계수값:',np.round(lr2.coef_, 1))
 
 
 # 회귀계수를 테이블로 만들어 보기 1 전치하여 세로로 보기
-coeff = pd.DataFrame(np.round(lr2.coef_,2), columns=lm_features).T
+coeff = pd.DataFrame(np.round(lr2.coef_,2), columns=lm_features2).T
 # coeff = coeff.reset_index()
 # coeff
-coeff.columns = lm_result_features
+coeff.columns = lm_result_features2
 # coeff = coeff.reset_index()
 # coeff = coeff.rename(columns=lm_result_features)
 # coeff
@@ -178,29 +193,29 @@ st.sidebar.header('Specify Input Parameters')
 
 def user_input_features():
     # ACH50 = st.sidebar.slider('ACH50', X_data.ACH50.min(), X_data.ACH50.max(), X_data.ACH50.mean())
-    ACH50 = st.sidebar.slider('침기율', 0, 50, 25)
-    Lighting_power_density_ = st.sidebar.slider('Lighting_power_density_', 3, 20, 7)
-    Chiller_COP = st.sidebar.slider('Chiller_COP', 4, 9, 6)
-    Pump_efficiency = st.sidebar.slider('Pump_efficiency', 0.0, 1.0, 0.7)
-    Fan_total_efficiency = st.sidebar.slider('Fan_total_efficiency', 0.0, 1.0, 0.7)
-    heat_recover_effectiveness = st.sidebar.slider('heat_recover_effectiveness', 0.0, 1.0, 0.7)
-    AHU_economiser = st.sidebar.select_slider('AHU_economiser', options=[0, 1])
-    Occupied_floor_area = st.sidebar.slider('Occupied_floor_area', 5000, 10000, 6000)
-    Floor = st.sidebar.select_slider('Floor 규모선택', options=[1,2,3])
-    Basement = st.sidebar.select_slider('지상유무', options=[0, 1])
-    Ground = st.sidebar.select_slider('지하유무', options=[0, 1])
+    ACH50_2 = st.sidebar.slider('침기율', 0, 50, 25)
+    Lighting_power_density__2 = st.sidebar.slider('Lighting_power_density_', 3, 20, 7)
+    Chiller_COP_2 = st.sidebar.slider('Chiller_COP', 4, 9, 6)
+    Pump_efficiency_2 = st.sidebar.slider('Pump_efficiency', 0.0, 1.0, 0.7)
+    Fan_total_efficiency_2 = st.sidebar.slider('Fan_total_efficiency', 0.0, 1.0, 0.7)
+    heat_recover_effectiveness_2 = st.sidebar.slider('heat_recover_effectiveness', 0.0, 1.0, 0.7)
+    AHU_economiser_2 = st.sidebar.select_slider('AHU_economiser', options=[0, 1])
+    Occupied_floor_area_2 = st.sidebar.slider('Occupied_floor_area', 5000, 10000, 6000)
+    Floor_2 = st.sidebar.select_slider('Floor 규모선택', options=[1,2,3])
+    Basement_2 = st.sidebar.select_slider('지상유무', options=[0, 1])
+    Ground_2 = st.sidebar.select_slider('지하유무', options=[0, 1])
 
-    data = {'ACH50': ACH50,
-            'Lighting_power_density_': Lighting_power_density_,
-            'Chiller_COP': Chiller_COP,
-            'Pump_efficiency': Pump_efficiency,
-            'Fan_total_efficiency': Fan_total_efficiency,
-            'heat_recover_effectiveness': heat_recover_effectiveness,
-            'AHU_economiser': AHU_economiser,
-            'Occupied_floor_area': Occupied_floor_area,
-            'Floor': Floor,
-            'Basement': Basement,
-            'Ground': Ground,}
+    data = {'ACH50': ACH50_2,
+            'Lighting_power_density_': Lighting_power_density__2,
+            'Chiller_COP': Chiller_COP_2,
+            'Pump_efficiency': Pump_efficiency_2,
+            'Fan_total_efficiency': Fan_total_efficiency_2,
+            'heat_recover_effectiveness': heat_recover_effectiveness_2,
+            'AHU_economiser': AHU_economiser_2,
+            'Occupied_floor_area': Occupied_floor_area_2,
+            'Floor': Floor_2,
+            'Basement': Basement_2,
+            'Ground': Ground_2,}
     features = pd.DataFrame(data, index=[0])
     return features
 
@@ -229,7 +244,7 @@ st.caption('--------- ', unsafe_allow_html=False)
 
 # df_month = pd.read_excel('data/month.xlsx')
 
-df_result2 = pd.DataFrame(result2, columns=lm_result_features).T.rename(columns={0:'kW'})
+df_result2 = pd.DataFrame(result2, columns=lm_result_features2).T.rename(columns={0:'kW'})
 # df_result
 df_result2.reset_index(inplace=True)
 
