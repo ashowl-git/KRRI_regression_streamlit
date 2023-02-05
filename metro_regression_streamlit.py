@@ -303,8 +303,8 @@ df_result2
 df_result_merge = pd.merge(df_result, df_result2)
 df_result_merge['index'] = df_result_merge['index'].str.slice(0,-3)
 
-df_result_merge = df_result_merge.rename(columns={'index':'BASE_index'})
-df_result_merge['ALT_index'] = df_result_merge['BASE_index']
+# df_result_merge = df_result_merge.rename(columns={'index':'BASE_index'})
+# df_result_merge['ALT_index'] = df_result_merge['BASE_index']
 df_result_merge
 
 
@@ -334,12 +334,14 @@ df_result_merge
 st.subheader('사용처별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 
-fig = px.box(df_result_merge, x=['BASE_index','ALT_index'], y=['BASE_kW','ALT_kW'], title='BASE ', hover_data=['BASE_index','ALT_index'],color=['BASE_index','ALT_index'] )
+fig = px.box(df_result_merge, x='index', y='BASE_kW', title='BASE', hover_data=['BASE_kW'], color='index' )
 fig.update_xaxes(rangeslider_visible=True)
+fig
 st.plotly_chart(fig, use_container_width=True)
 
-fig = px.box(df_result_merge, x='index', y='ALT_kW', title='ALT', hover_data=['index'],color='index' )
+fig = px.box(df_result_merge, x='index', y='ALT_kW', title='ALT', hover_data=['ALT_kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
+fig
 st.plotly_chart(fig, use_container_width=True)
 
 
@@ -378,6 +380,7 @@ df_describe
 fig = px.line(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='BASE, ALT ',color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group')
+fig
 st.plotly_chart(fig, use_container_width=True)
 
 
