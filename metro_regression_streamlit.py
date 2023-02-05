@@ -336,13 +336,13 @@ st.caption('--------- ', unsafe_allow_html=False)
 
 fig = px.box(df_result_merge, x='index', y='BASE_kW', title='BASE', hover_data=['BASE_kW'], color='index' )
 fig.update_xaxes(rangeslider_visible=True)
-fig
-# st.plotly_chart(fig, use_container_width=True)
+# fig
+st.plotly_chart(fig, use_container_width=True)
 
 fig = px.box(df_result_merge, x='index', y='ALT_kW', title='ALT', hover_data=['ALT_kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
-fig
-# st.plotly_chart(fig, use_container_width=True)
+# fig
+st.plotly_chart(fig, use_container_width=True)
 
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
@@ -352,13 +352,13 @@ st.caption('--------- ', unsafe_allow_html=False)
 
 fig = px.bar(df_result_merge, x='Month', y='BASE_kW', title='BASE ', hover_data=['BASE_kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
-fig
+# fig
 st.plotly_chart(fig, use_container_width=True)
 
 fig = px.bar(df_result_merge, x='Month', y='ALT_kW', title='ALT ', hover_data=['ALT_kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
-fig
-# st.plotly_chart(fig, use_container_width=True)
+# fig
+st.plotly_chart(fig, use_container_width=True)
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
 
@@ -367,13 +367,13 @@ st.caption('--------- ', unsafe_allow_html=False)
 
 fig = px.line(df_result_merge, x='Month', y='BASE_kW', title='BASE ', hover_data=['BASE_kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
-fig
-# st.plotly_chart(fig, use_container_width=True)
+# fig
+st.plotly_chart(fig, use_container_width=True)
 
 fig = px.line(df_result_merge, x='Month', y='ALT_kW', title='ALT ', hover_data=['ALT_kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
-fig
-# st.plotly_chart(fig, use_container_width=True)
+# fig
+st.plotly_chart(fig, use_container_width=True)
 
 
 
@@ -384,18 +384,18 @@ df_describe
 fig = px.line(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='BASE, ALT ',color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group')
-fig
-# st.plotly_chart(fig, use_container_width=True)
+# fig
+st.plotly_chart(fig, use_container_width=True)
 
 
 dfdf = df_result_merge.groupby(['index'])['BASE_kW','ALT_kW'].sum()
 dfdf.reset_index(inplace=True)
 dfdf
 
-fig = px.bar(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='ALT ',color='index' )
+# fig = px.bar(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='ALT ',color='index' )
 # fig.update_xaxes(rangeslider_visible=True)
 # fig.update_layout(barmode='group')
-fig
+# fig
 
 
 
