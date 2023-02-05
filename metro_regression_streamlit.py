@@ -309,7 +309,7 @@ cond1 = df_result_merge['BASE_kW'] < 0
 cond2 = df_result_merge['ALT_kW'] < 0
 
 df_result_merge.loc[cond1,'BASE_kW'] == 0.0
-df_result_merge.loc[cond1,'ALT_kW'] == 0.0
+df_result_merge.loc[cond2,'ALT_kW'] == 0.0
 df_result_merge
 # df_result_merge.loc[df_result_merge[['BASE_kW','ALT_kW']] < 0 , ['BASE_kW','ALT_kW'] ] = 0
 
