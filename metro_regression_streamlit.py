@@ -305,11 +305,14 @@ df_result_merge
 
 # 추세에 따라 음수값이 나오는것은 0으로 수정
 
-cond1 = df_result_merge['BASE_kW'] < 0
+cond1 = df_result_merge['BASE_kW'] > 0
 cond2 = df_result_merge['ALT_kW'] < 0
-df_result_merge[['BASE_kW','ALT_kW']]
 
-df_result_merge.loc[df_result_merge[['BASE_kW','ALT_kW']] < 0 , ['BASE_kW','ALT_kW'] ] = 0
+df_result_merge['BASE_kW'] = np.where(cond1 , 0)
+df_result_merge['ALT_kW'] = np.where(cond2 , 0)
+
+
+# df_result_merge.loc[df_result_merge[['BASE_kW','ALT_kW']] < 0 , ['BASE_kW','ALT_kW'] ] = 0
 
 
 # df_result_merge['BASE_kW'] = np.where(cond1, 0)
