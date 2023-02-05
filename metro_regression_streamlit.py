@@ -324,9 +324,9 @@ st.dataframe(df_result_merge, use_container_width=st.session_state.use_container
 
 df_result_merge_grouped = df_result_merge.groupby(['index'])['BASE_kW','ALT_kW'].sum()
 df_result_merge_grouped.reset_index(inplace=True)
-df_result_merge_grouped
+# df_result_merge_grouped
 
-st.checkbox("Use container width2", value=False, key="use_container_width2")
+st.checkbox("Use container width", value=False, key="use_container_width2")
 st.dataframe(df_result_merge_grouped, use_container_width=st.session_state.use_container_width2)
 
 # df_result_merge.loc[df_result_merge[['BASE_kW','ALT_kW']] < 0 , ['BASE_kW','ALT_kW'] ] = 0
