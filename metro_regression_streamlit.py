@@ -325,7 +325,7 @@ fig = px.bar(df_result_merge, x='Month', y='BASE_kW', title='BASE ', hover_data=
 fig.update_xaxes(rangeslider_visible=True)
 st.plotly_chart(fig, use_container_width=True)
 
-fig = px.bar(df_result_merge, x='Month', y='ALT_kW', title='ALT ', hover_data=['kW_alt'],color='index' )
+fig = px.bar(df_result_merge, x='Month', y='ALT_kW', title='ALT ', hover_data=['ALT_kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 st.plotly_chart(fig, use_container_width=True)
 
