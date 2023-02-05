@@ -306,8 +306,7 @@ df_result_merge['index'] = df_result_merge['index'].str.slice(0,-3)
 # df_result_merge = df_result_merge.rename(columns={'index':'BASE_index'})
 # df_result_merge['ALT_index'] = df_result_merge['BASE_index']
 # df_result_merge
-st.checkbox("Use container width", value=False, key="use_container_width")
-st.dataframe(df_result_merge, use_container_width=st.session_state.use_container_width)
+
 
 
 # 추세에 따라 음수값이 나오는것은 0으로 수정
@@ -317,8 +316,17 @@ cond2 = df_result_merge['ALT_kW'] < 0
 
 df_result_merge.loc[cond1,'BASE_kW'] = 0
 df_result_merge.loc[cond2,'ALT_kW'] = 0.0
-df_result_merge
+# df_result_merge
+st.checkbox("Use container width", value=False, key="use_container_width")
+st.dataframe(df_result_merge, use_container_width=st.session_state.use_container_width)
 
+
+
+df_result_merge_grouped = df_result_merge.groupby(['index'])['BASE_kW','ALT_kW'].sum()
+df_result_merge_grouped.reset_index(inplace=True)
+# dfdf
+st.checkbox("Use container width", value=False, key="use_container_width")
+st.dataframe(df_result_merge_grouped, use_container_width=st.session_state.use_container_width)
 
 # df_result_merge.loc[df_result_merge[['BASE_kW','ALT_kW']] < 0 , ['BASE_kW','ALT_kW'] ] = 0
 
@@ -389,9 +397,7 @@ fig.update_layout(barmode='group')
 st.plotly_chart(fig, use_container_width=True)
 
 
-dfdf = df_result_merge.groupby(['index'])['BASE_kW','ALT_kW'].sum()
-dfdf.reset_index(inplace=True)
-dfdf
+
 
 # fig = px.bar(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='ALT ',color='index' )
 # fig.update_xaxes(rangeslider_visible=True)
