@@ -296,8 +296,8 @@ df_result2.reset_index(inplace=True)
 
 # 숫자만 추출해서 Month 행 만들기
 df_result['Month'] = df_result['index'].str.extract(r'(\d+)')
-df_result
-df_result2
+# df_result
+# df_result2
 
 # BASE 와 ALT 데이터 컬럼 머지시켜 하나의 데이터 프레임 만들기
 df_result_merge = pd.merge(df_result, df_result2)
@@ -305,8 +305,8 @@ df_result_merge['index'] = df_result_merge['index'].str.slice(0,-3)
 
 # df_result_merge = df_result_merge.rename(columns={'index':'BASE_index'})
 # df_result_merge['ALT_index'] = df_result_merge['BASE_index']
-df_result_merge
-
+# df_result_merge
+st.dataframe(df_result_merge, use_container_width=st.session_state.use_container_width)
 
 
 # 추세에 따라 음수값이 나오는것은 0으로 수정
