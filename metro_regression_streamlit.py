@@ -306,6 +306,7 @@ df_result_merge['index'] = df_result_merge['index'].str.slice(0,-3)
 # df_result_merge = df_result_merge.rename(columns={'index':'BASE_index'})
 # df_result_merge['ALT_index'] = df_result_merge['BASE_index']
 # df_result_merge
+st.checkbox("Use container width", value=False, key="use_container_width")
 st.dataframe(df_result_merge, use_container_width=st.session_state.use_container_width)
 
 
