@@ -398,11 +398,6 @@ fig = px.bar(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='ALT ',co
 fig
 
 
-fig = px.bar(dfdf, x='Month', y=['BASE_kW','ALT_kW'], title='ALT ',color='index' )
-# fig.update_xaxes(rangeslider_visible=True)
-fig.update_layout(barmode='group')
-fig
-
 
 
 
