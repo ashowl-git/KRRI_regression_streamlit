@@ -289,16 +289,22 @@ df_result2 = pd.DataFrame(result2, columns=lm_result_features2).T.rename(columns
 df_result.reset_index(inplace=True)
 df_result2.reset_index(inplace=True)
 
-
+# df_result.rename(columns={'index':'BASE_index'})
+# df_result2.rename(columns={'index':'BASE_index2'})
 # 숫자만 추출해서 행 만들기 
 # 숫자+'호' 문자열 포함한 행 추출해서 행 만들기 df['floor'] = df['addr'].str.extract(r'(\d+호)')
 
 # 숫자만 추출해서 Month 행 만들기
 df_result['Month'] = df_result['index'].str.extract(r'(\d+)')
+df_result
+df_result2
 
 # BASE 와 ALT 데이터 컬럼 머지시켜 하나의 데이터 프레임 만들기
 df_result_merge = pd.merge(df_result, df_result2)
 df_result_merge['index'] = df_result_merge['index'].str.slice(0,-3)
+
+df_result_merge = df_result_merge.rename(columns={'index':'BASE_index'})
+df_result_merge['ALT_index'] = df_result_merge['BASE_index']
 df_result_merge
 
 
@@ -328,7 +334,7 @@ df_result_merge
 st.subheader('사용처별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 
-fig = px.box(df_result_merge, x='index', y=['BASE_kW'], title='BASE ', hover_data=['index'],color='index' )
+fig = px.box(df_result_merge, x=['BASE_index','ALT_index'], y=['BASE_kW','ALT_kW'], title='BASE ', hover_data=['BASE_index','ALT_index'],color=['BASE_index','ALT_index'] )
 fig.update_xaxes(rangeslider_visible=True)
 st.plotly_chart(fig, use_container_width=True)
 
@@ -375,10 +381,6 @@ fig.update_layout(barmode='group')
 st.plotly_chart(fig, use_container_width=True)
 
 
-fig = px.line(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='BASE, ALT ' )
-fig.update_xaxes(rangeslider_visible=True)
-fig.update_layout(barmode='group')
-st.plotly_chart(fig, use_container_width=True)
 
 
 
