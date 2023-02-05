@@ -71,11 +71,10 @@ from sklearn.metrics import mean_squared_log_error
 # page_names_to_funcs[selected_page]()
 
 
-# from pages import page3
 
 # 학습파일 불러오기
 df_raw = pd.read_excel('data/metro_sim_month.xlsx')
-# df_raw.head()
+
 
 st.subheader('LinearRegression 학습 대상 파일 직접 업로드 하기')
 st.caption('업로드 하지 않아도 기본 학습 Data-set 으로 작동합니다 ', unsafe_allow_html=False)
@@ -89,7 +88,9 @@ if uploaded_file is not None:
 # df_raw.columns
 df_raw2 = df_raw.copy()
 
-df_raw2.rename(columns={
+
+# Alt 용 독립변수 데이터셋 컬럼명 수정
+df_raw2 = df_raw2.rename(columns={
     'ACH50':'ACH50_2',
     'Lighting_power_density_':'Lighting_power_density__2',
     'Chiller_COP':'Chiller_COP_2',
@@ -101,7 +102,7 @@ df_raw2.rename(columns={
     'Floor':'Floor_2',
     'Basement':'Basement_2',
     'Ground':'Ground_2',
-    },inplace=True)
+    })
 
 
 # 독립변수컬럼 리스트
@@ -109,6 +110,7 @@ lm_features =['ACH50', 'Lighting_power_density_', 'Chiller_COP', 'Pump_efficienc
        'Fan_total_efficiency', 'heat_recover_effectiveness', 'AHU_economiser',
        'Occupied_floor_area', 'Floor', 'Basement', 'Ground',]
 
+# Alt 용 독립변수 데이터셋 컬럼명 리스트
 lm_features2 =['ACH50_2', 'Lighting_power_density__2', 'Chiller_COP_2', 'Pump_efficiency_2',
        'Fan_total_efficiency_2', 'heat_recover_effectiveness_2', 'AHU_economiser_2',
        'Occupied_floor_area_2', 'Floor_2', 'Basement_2', 'Ground_2',]
