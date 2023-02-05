@@ -375,11 +375,6 @@ fig.update_layout(barmode='group')
 st.plotly_chart(fig, use_container_width=True)
 
 
-fig = px.bar(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='ALT ',color='index' )
-fig.update_xaxes(rangeslider_visible=True)
-fig.update_layout(barmode='group')
-st.plotly_chart(fig, use_container_width=True)
-
 
 
 
