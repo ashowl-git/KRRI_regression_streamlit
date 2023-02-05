@@ -302,6 +302,19 @@ df_result_merge['index'] = df_result_merge['index'].str.slice(0,-3)
 df_result_merge
 
 
+
+# 추세에 따라 음수값이 나오는것은 0으로 수정
+
+cond1 = df_result_merge['BASE_kW'] < 0
+cond2 = df_result_merge['ALT_kW'] < 0
+
+df_result_merge['BASE_kW'] = np.where(cond1, 0)
+df_result_merge['ALT_kW'] = np.where(cond2, 0)
+
+
+
+
+
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
 
 st.subheader('사용처별 에너지 사용량 예측값 그래프')
