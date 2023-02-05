@@ -381,7 +381,7 @@ fig = px.line(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='BASE, A
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group')
 fig
-st.plotly_chart(fig, use_container_width=True)
+# st.plotly_chart(fig, use_container_width=True)
 
 
 
