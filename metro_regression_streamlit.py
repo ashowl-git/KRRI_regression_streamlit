@@ -381,7 +381,7 @@ df_describe = df_result_merge.describe()
 df_describe
 
 
-fig = px.line(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='BASE, ALT ',color='index' )
+fig = px.bar(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='BASE, ALT ',color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group')
 fig
@@ -391,7 +391,6 @@ fig
 dfdf = df_result_merge.groupby(['index'])['BASE_kW','ALT_kW'].sum()
 dfdf.reset_index(inplace=True)
 dfdf
-dfdf.plot()
 
 fig = px.bar(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='ALT ',color='index' )
 # fig.update_xaxes(rangeslider_visible=True)
