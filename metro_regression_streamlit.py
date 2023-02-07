@@ -1,10 +1,10 @@
 # 분석전에 필요한 라이브러리들을 불러오기
-
+# 테스트
 # plotly라이브러리가 없다면 아래 설치
 # conda install -c plotly plotly=4.12.0
 # conda install -c conda-forge cufflinks-py
 # conda install seaborn
-
+   
 import glob 
 import os
 import sys, subprocess
