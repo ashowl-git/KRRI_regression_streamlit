@@ -440,8 +440,8 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
-df_describe = df_concat.describe()
-df_describe
+# df_describe = df_concat.describe()
+# df_describe
 
 
 
