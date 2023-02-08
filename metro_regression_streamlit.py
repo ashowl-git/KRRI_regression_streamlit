@@ -235,8 +235,8 @@ def user_input_features():
             'Ground': Ground,}
     features = pd.DataFrame(data, index=[0])
     return features
-df = user_input_features()
-result = lr.predict(df)
+df_input = user_input_features()
+result = lr.predict(df_input)
 
 
 
@@ -272,9 +272,9 @@ def user_input_features2():
     features2 = pd.DataFrame(data2, index=[0])
     return features2
 
-df2 = user_input_features2()
+df2_input = user_input_features2()
 
-result2 = lr2.predict(df2)
+result2 = lr2.predict(df2_input)
 
 
 st.subheader('에너지 사용량 예측값')
@@ -282,10 +282,19 @@ st.caption('좌측의 변수항목 슬라이더 조정 ', unsafe_allow_html=Fals
 st.caption('--------- ', unsafe_allow_html=False)
 
 # 예측된 결과를 데이터 프레임으로 만들어 보기
-df_result = pd.DataFrame(result, columns=lm_result_features).T.rename(columns={0:'BASE_kW'})
-df_result2 = pd.DataFrame(result2, columns=lm_result_features2).T.rename(columns={0:'ALT_kW'})
+df_result = pd.DataFrame(result, columns=lm_result_features).T.rename(columns={0:'kW'})
+df_result2 = pd.DataFrame(result2, columns=lm_result_features2).T.rename(columns={0:'kW'})
 
-# df_result
+
+df_result['Alt'] = 'BASE'
+df_result2['Alt'] = 'Alt_1'
+df_result['kW/m2'] = df_result['kW'] / df_input['Occupied_floor_area'][0]
+df_result2['kW/m2'] = df_result2['kW'] / df2_input['Occupied_floor_area_2'][0]
+
+
+df_result
+df_result2
+
 df_result.reset_index(inplace=True)
 df_result2.reset_index(inplace=True)
 
@@ -296,13 +305,17 @@ df_result2.reset_index(inplace=True)
 
 # 숫자만 추출해서 Month 행 만들기
 df_result['Month'] = df_result['index'].str.extract(r'(\d+)')
+df_result2['Month'] = df_result2['index'].str.extract(r'(\d+)')
 # df_result
 # df_result2
 
 # BASE 와 ALT 데이터 컬럼 머지시켜 하나의 데이터 프레임 만들기
-df_result_merge = pd.merge(df_result, df_result2)
-df_result_merge['index'] = df_result_merge['index'].str.slice(0,-3)
+# df_result_merge = pd.merge(df_result, df_result2)
 
+df_concat = pd.concat([df_result,df_result2])
+df_concat['index'] = df_concat['index'].str.slice(0,-3)
+# df_concat = df_concat.drop(columns='level_0')
+df_concat
 # df_result_merge = df_result_merge.rename(columns={'index':'BASE_index'})
 # df_result_merge['ALT_index'] = df_result_merge['BASE_index']
 # df_result_merge
@@ -310,24 +323,21 @@ df_result_merge['index'] = df_result_merge['index'].str.slice(0,-3)
 
 
 # 추세에 따라 음수값이 나오는것은 0으로 수정
+cond1 = df_concat['kW'] < 0
+df_concat.loc[cond1,'kW'] = 0
 
-cond1 = df_result_merge['BASE_kW'] < 0
-cond2 = df_result_merge['ALT_kW'] < 0
-
-df_result_merge.loc[cond1,'BASE_kW'] = 0
-df_result_merge.loc[cond2,'ALT_kW'] = 0.0
-# df_result_merge
 st.checkbox("Use container width", value=False, key="use_container_width")
-st.dataframe(df_result_merge, use_container_width=st.session_state.use_container_width)
+st.dataframe(df_concat, use_container_width=st.session_state.use_container_width)
 
 
 
-df_result_merge_grouped = df_result_merge.groupby(['index'])['BASE_kW','ALT_kW'].sum()
-df_result_merge_grouped.reset_index(inplace=True)
-# df_result_merge_grouped
+# df_concat = df_concat.groupby(['index','Alt'])['kW'].sum()
+# df_concat
+# df_concat.reset_index(inplace=True)
+# # df_result_merge_grouped
 
 st.checkbox("Use container width", value=False, key="use_container_width2")
-st.dataframe(df_result_merge_grouped, use_container_width=st.session_state.use_container_width2)
+st.dataframe(df_concat, use_container_width=st.session_state.use_container_width2)
 
 # df_result_merge.loc[df_result_merge[['BASE_kW','ALT_kW']] < 0 , ['BASE_kW','ALT_kW'] ] = 0
 
@@ -336,6 +346,20 @@ st.dataframe(df_result_merge_grouped, use_container_width=st.session_state.use_c
 # df_result_merge['ALT_kW'] = np.where(cond2, 0)
 
 
+df_concat = df_concat.reset_index(drop=True)
+df_concat
+
+df_concat_연간전체 = df_concat.groupby('Alt').agg(년간전기사용량_전체 = ('kW', 'sum'), 단위면적당_년간전기사용량_전체 = ('kW/m2', 'sum'))
+df_concat_월간전체 = df_concat.groupby(['Alt','Month']).agg( 월간전기사용량_전체 = ('kW', 'sum'), 단위면적당_월간전기사용량_전체 = ('kW/m2', 'sum'))
+df_concat_연간원별 = df_concat.groupby('index').agg(년간전기사용량_원별 = ('kW', 'sum'), 단위면적당_년간전기사용량_원별 = ('kW/m2', 'sum'))
+df_concat_월간원별 = df_concat.groupby(['index','Month']).agg(년간전기사용량_원별 = ('kW', 'sum'), 단위면적당_년간전기사용량_원별 = ('kW/m2', 'sum'))
+
+df_concat_연간전체 = df_concat_연간전체.reset_index()
+df_concat_월간전체 = df_concat_월간전체.reset_index()
+df_concat_연간원별 = df_concat_연간원별.reset_index()
+df_concat_월간원별 = df_concat_월간원별.reset_index()
+
+df_concat_월간원별.plot.bar()
 
 
 
@@ -343,16 +367,20 @@ st.dataframe(df_result_merge_grouped, use_container_width=st.session_state.use_c
 
 st.subheader('사용처별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
-
-fig = px.box(df_result_merge, x='index', y='BASE_kW', title='BASE', hover_data=['BASE_kW'], color='index' )
+df_concat
+fig = px.box(df_concat, x='index', y='kW', title='BASE_ALT', hover_data=['kW'], color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
-# fig
+fig.update_layout(barmode='group') #alt별 구분
+fig
 st.plotly_chart(fig, use_container_width=True)
 
-fig = px.box(df_result_merge, x='index', y='ALT_kW', title='ALT', hover_data=['ALT_kW'],color='index' )
+df_concat
+fig = px.bar(df_concat, x='index', y='kW', title='BASE_ALT', hover_data=['kW'], color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
-# fig
+fig.update_layout(barmode='group') #alt별 구분
+fig
 st.plotly_chart(fig, use_container_width=True)
+
 
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
@@ -360,12 +388,13 @@ st.plotly_chart(fig, use_container_width=True)
 st.subheader('월별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 
-fig = px.bar(df_result_merge, x='Month', y='BASE_kW', title='BASE ', hover_data=['BASE_kW'],color='index' )
+
+fig = px.bar(df_concat, x='Alt', y='kW', title='BASE_ALT ', hover_data=['index'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
-# fig
+fig
 st.plotly_chart(fig, use_container_width=True)
 
-fig = px.bar(df_result_merge, x='Month', y='ALT_kW', title='ALT ', hover_data=['ALT_kW'],color='index' )
+fig = px.bar(df_concat, x='Month', y='ALT_kW', title='ALT ', hover_data=['ALT_kW'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 # fig
 st.plotly_chart(fig, use_container_width=True)
