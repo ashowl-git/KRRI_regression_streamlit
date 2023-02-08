@@ -399,7 +399,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
-fig = px.bar(df_concat_연간전체, x='index', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'], color='Alt' )
+fig = px.bar(df_concat, x='index', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'], color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
 # fig
