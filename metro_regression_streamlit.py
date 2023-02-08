@@ -367,36 +367,17 @@ df_concat_월간원별.plot.bar()
 
 st.subheader('사용처별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
-df_concat
-fig = px.box(df_concat, x='index', y='kW', title='BASE_ALT', hover_data=['kW'], color='Alt' )
+
+fig = px.box(df_concat, x='index', y='kW', title='BASE_ALT 원별비교 BOXplot', hover_data=['kW'], color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
 fig
 st.plotly_chart(fig, use_container_width=True)
 
-df_concat
-fig = px.bar(df_concat, x='index', y='kW', title='BASE_ALT', hover_data=['kW'], color='Alt' )
+fig = px.bar(df_concat, x='index', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'], color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
 fig
-st.plotly_chart(fig, use_container_width=True)
-
-
-
-# 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
-
-st.subheader('월별 에너지 사용량 예측값 그래프')
-st.caption('--------- ', unsafe_allow_html=False)
-
-
-fig = px.bar(df_concat, x='Alt', y='kW', title='BASE_ALT ', hover_data=['index'],color='index' )
-fig.update_xaxes(rangeslider_visible=True)
-fig
-st.plotly_chart(fig, use_container_width=True)
-
-fig = px.bar(df_concat, x='Month', y='ALT_kW', title='ALT ', hover_data=['ALT_kW'],color='index' )
-fig.update_xaxes(rangeslider_visible=True)
-# fig
 st.plotly_chart(fig, use_container_width=True)
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
@@ -404,27 +385,31 @@ st.plotly_chart(fig, use_container_width=True)
 st.subheader('월별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 
-fig = px.line(df_result_merge, x='Month', y='BASE_kW', title='BASE ', hover_data=['BASE_kW'],color='index' )
+fig = px.bar(df_concat, x='Month', y='kW', title='BASE_ALT 월별비교', hover_data=['index'],color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
-# fig
+fig.update_layout(barmode='group') #alt별 구분
+fig
 st.plotly_chart(fig, use_container_width=True)
 
-fig = px.line(df_result_merge, x='Month', y='ALT_kW', title='ALT ', hover_data=['ALT_kW'],color='index' )
+# 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
+
+st.subheader('월별 에너지 사용량 예측값 그래프 _ LINE')
+st.caption('--------- ', unsafe_allow_html=False)
+
+fig = px.line(df_concat, x='Month', y='kW', title='BASE_ALT 월별비교', hover_data=['Alt'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
-# fig
+fig.update_layout(barmode='group') #alt별 구분
+fig
 st.plotly_chart(fig, use_container_width=True)
 
 
 
-df_describe = df_result_merge.describe()
+
+df_describe = df_concat.describe()
 df_describe
 
 
-fig = px.line(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='BASE, ALT ',color='index' )
-fig.update_xaxes(rangeslider_visible=True)
-fig.update_layout(barmode='group')
-# fig
-st.plotly_chart(fig, use_container_width=True)
+
 
 
 
