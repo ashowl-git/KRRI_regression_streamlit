@@ -345,6 +345,7 @@ st.dataframe(df_concat, use_container_width=st.session_state.use_container_width
 
 
 df_concat = df_concat.reset_index(drop=True)
+df_concat = df_concat.round(2)
 # df_concat
 
 df_concat_연간전체 = df_concat.groupby('Alt').agg(년간전기사용량_전체 = ('kW', 'sum'), 단위면적당_년간전기사용량_전체 = ('kW/m2', 'sum'))
@@ -359,24 +360,56 @@ df_concat_월간원별 = df_concat_월간원별.reset_index()
 
 # df_concat_월간원별.plot.bar()
 
-
-
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
 
 st.subheader('사용처별 에너지 사용량 예측값 그래프')
 st.caption('--------- ', unsafe_allow_html=False)
 
-fig = px.box(df_concat, x='index', y='kW', title='BASE_ALT 원별비교 BOXplot', hover_data=['kW'], color='Alt' )
+fig = px.box(
+  df_concat, x='index', y='kW', 
+  title='BASE_ALT 원별비교 BOXplot', 
+  hover_data=['kW'], 
+  color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
 # fig
 st.plotly_chart(fig, use_container_width=True)
 
-fig = px.bar(df_concat, x='index', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'], color='Alt' )
+fig = px.bar(
+  df_concat_연간전체, x='Alt', y='년간전기사용량_전체', 
+  title='BASE_ALT 에너지사용량', 
+  hover_data=['년간전기사용량_전체'], 
+  color='Alt' )
+fig.update_xaxes(rangeslider_visible=True)
+fig.update_layout(barmode='group') #alt별 구분
+fig
+st.plotly_chart(fig, use_container_width=True)
+
+
+
+fig = px.bar(
+  df_concat_연간전체, x='Alt', y='단위면적당_년간전기사용량_전체', 
+  title='BASE_ALT 단위면적당 에너지사용량', 
+  hover_data=['단위면적당_년간전기사용량_전체'], 
+  color='Alt' )
+fig.update_xaxes(rangeslider_visible=True)
+fig.update_layout(barmode='group') #alt별 구분
+fig
+st.plotly_chart(fig, use_container_width=True)
+
+
+
+fig = px.bar(df_concat_연간전체, x='index', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'], color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
 # fig
 st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+
+
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
 
@@ -388,6 +421,10 @@ fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
 # fig
 st.plotly_chart(fig, use_container_width=True)
+
+
+
+
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
 
