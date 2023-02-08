@@ -382,7 +382,7 @@ fig = px.bar(
   color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
-fig
+# fig
 st.plotly_chart(fig, use_container_width=True)
 
 
@@ -394,7 +394,7 @@ fig = px.bar(
   color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
-fig
+# fig
 st.plotly_chart(fig, use_container_width=True)
 
 
