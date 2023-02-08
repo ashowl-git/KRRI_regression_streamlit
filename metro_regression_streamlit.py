@@ -292,8 +292,8 @@ df_result['kW/m2'] = df_result['kW'] / df_input['Occupied_floor_area'][0]
 df_result2['kW/m2'] = df_result2['kW'] / df2_input['Occupied_floor_area_2'][0]
 
 
-df_result
-df_result2
+# df_result
+# df_result2
 
 df_result.reset_index(inplace=True)
 df_result2.reset_index(inplace=True)
@@ -326,17 +326,15 @@ df_concat['index'] = df_concat['index'].str.slice(0,-3)
 cond1 = df_concat['kW'] < 0
 df_concat.loc[cond1,'kW'] = 0
 
-st.checkbox("Use container width", value=False, key="use_container_width")
+st.checkbox("Use container width _ BASE", value=False, key="use_container_width")
 st.dataframe(df_concat, use_container_width=st.session_state.use_container_width)
-
-
 
 # df_concat = df_concat.groupby(['index','Alt'])['kW'].sum()
 # df_concat
 # df_concat.reset_index(inplace=True)
 # # df_result_merge_grouped
 
-st.checkbox("Use container width", value=False, key="use_container_width2")
+st.checkbox("Use container width _ Alt", value=False, key="use_container_width2")
 st.dataframe(df_concat, use_container_width=st.session_state.use_container_width2)
 
 # df_result_merge.loc[df_result_merge[['BASE_kW','ALT_kW']] < 0 , ['BASE_kW','ALT_kW'] ] = 0
