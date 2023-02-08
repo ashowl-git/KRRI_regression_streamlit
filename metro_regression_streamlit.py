@@ -315,7 +315,7 @@ df_result2['Month'] = df_result2['index'].str.extract(r'(\d+)')
 df_concat = pd.concat([df_result,df_result2])
 df_concat['index'] = df_concat['index'].str.slice(0,-3)
 # df_concat = df_concat.drop(columns='level_0')
-df_concat
+# df_concat
 # df_result_merge = df_result_merge.rename(columns={'index':'BASE_index'})
 # df_result_merge['ALT_index'] = df_result_merge['BASE_index']
 # df_result_merge
@@ -347,7 +347,7 @@ st.dataframe(df_concat, use_container_width=st.session_state.use_container_width
 
 
 df_concat = df_concat.reset_index(drop=True)
-df_concat
+# df_concat
 
 df_concat_연간전체 = df_concat.groupby('Alt').agg(년간전기사용량_전체 = ('kW', 'sum'), 단위면적당_년간전기사용량_전체 = ('kW/m2', 'sum'))
 df_concat_월간전체 = df_concat.groupby(['Alt','Month']).agg( 월간전기사용량_전체 = ('kW', 'sum'), 단위면적당_월간전기사용량_전체 = ('kW/m2', 'sum'))
@@ -359,7 +359,7 @@ df_concat_월간전체 = df_concat_월간전체.reset_index()
 df_concat_연간원별 = df_concat_연간원별.reset_index()
 df_concat_월간원별 = df_concat_월간원별.reset_index()
 
-df_concat_월간원별.plot.bar()
+# df_concat_월간원별.plot.bar()
 
 
 
