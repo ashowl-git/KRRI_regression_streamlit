@@ -371,13 +371,13 @@ st.caption('--------- ', unsafe_allow_html=False)
 fig = px.box(df_concat, x='index', y='kW', title='BASE_ALT 원별비교 BOXplot', hover_data=['kW'], color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
-fig
+# fig
 st.plotly_chart(fig, use_container_width=True)
 
 fig = px.bar(df_concat, x='index', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'], color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
-fig
+# fig
 st.plotly_chart(fig, use_container_width=True)
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
@@ -388,7 +388,7 @@ st.caption('--------- ', unsafe_allow_html=False)
 fig = px.bar(df_concat, x='Month', y='kW', title='BASE_ALT 월별비교', hover_data=['index'],color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
-fig
+# fig
 st.plotly_chart(fig, use_container_width=True)
 
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
@@ -399,7 +399,7 @@ st.caption('--------- ', unsafe_allow_html=False)
 fig = px.line(df_concat, x='Month', y='kW', title='BASE_ALT 월별비교', hover_data=['Alt'],color='index' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
-fig
+# fig
 st.plotly_chart(fig, use_container_width=True)
 
 
