@@ -334,8 +334,8 @@ st.dataframe(df_concat, use_container_width=st.session_state.use_container_width
 # df_concat.reset_index(inplace=True)
 # # df_result_merge_grouped
 
-st.checkbox("Use container width _ Alt", value=False, key="use_container_width2")
-st.dataframe(df_concat, use_container_width=st.session_state.use_container_width2)
+# st.checkbox("Use container width _ Alt", value=False, key="use_container_width2")
+# st.dataframe(df_concat, use_container_width=st.session_state.use_container_width2)
 
 # df_result_merge.loc[df_result_merge[['BASE_kW','ALT_kW']] < 0 , ['BASE_kW','ALT_kW'] ] = 0
 
@@ -385,8 +385,6 @@ fig.update_layout(barmode='group') #alt별 구분
 # fig
 st.plotly_chart(fig, use_container_width=True)
 
-
-
 fig = px.bar(
   df_concat_연간전체, x='Alt', y='단위면적당_년간전기사용량_전체', 
   title='BASE_ALT 단위면적당 에너지사용량', 
@@ -397,13 +395,25 @@ fig.update_layout(barmode='group') #alt별 구분
 # fig
 st.plotly_chart(fig, use_container_width=True)
 
-
-
 fig = px.bar(df_concat, x='index', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'], color='Alt' )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
 # fig
 st.plotly_chart(fig, use_container_width=True)
+
+
+fig = px.bar(df_result, x='Month', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'], color='index' )
+fig.update_xaxes(rangeslider_visible=True)
+fig.update_layout(barmode='group') #alt별 구분
+fig
+st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+
+
+
 
 
 
