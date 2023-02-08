@@ -308,12 +308,18 @@ df_result['Month'] = df_result['index'].str.extract(r'(\d+)')
 df_result2['Month'] = df_result2['index'].str.extract(r'(\d+)')
 # df_result
 # df_result2
-
+df_result['index']  =df_result['index'].str.slice(0,-3)
+df_result2['index'] = df_result2['index'].str.slice(0,-3)
 # BASE 와 ALT 데이터 컬럼 머지시켜 하나의 데이터 프레임 만들기
 # df_result_merge = pd.merge(df_result, df_result2)
 
 df_concat = pd.concat([df_result,df_result2])
-df_concat['index'] = df_concat['index'].str.slice(0,-3)
+
+# df_concat
+# df_concat['index'] = df_concat['index'].str.slice(0,-3)
+
+
+
 # df_concat = df_concat.drop(columns='level_0')
 # df_concat
 # df_result_merge = df_result_merge.rename(columns={'index':'BASE_index'})
@@ -401,8 +407,8 @@ fig.update_layout(barmode='group') #alt별 구분
 # fig
 st.plotly_chart(fig, use_container_width=True)
 
-
-fig = px.bar(df_result, x='Month', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'], color='index' )
+df_result
+fig = px.bar(df_result, x='Month', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'],  )
 fig.update_xaxes(rangeslider_visible=True)
 fig.update_layout(barmode='group') #alt별 구분
 fig
