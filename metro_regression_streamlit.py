@@ -408,9 +408,9 @@ fig.update_layout(barmode='group') #alt별 구분
 st.plotly_chart(fig, use_container_width=True)
 
 df_result
-fig = px.bar(df_result, x='Month', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'],  )
+fig = px.bar(df_result, x='Month', y='kW', title='BASE_ALT 원별비교', hover_data=['kW'], color='index' )
 fig.update_xaxes(rangeslider_visible=True)
-fig.update_layout(barmode='group') #alt별 구분
+# fig.update_layout(barmode='group') #alt별 구분
 fig
 st.plotly_chart(fig, use_container_width=True)
 
