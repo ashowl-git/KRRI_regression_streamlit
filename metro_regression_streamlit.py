@@ -511,7 +511,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from obj2html import obj2html
 
-st.header("3D Model Viewer")
+st.header("3D Model Viewer 수정중")
 model_file = st.file_uploader("Upload your .obj file", type=['obj'])
 
 if model_file is not None:
