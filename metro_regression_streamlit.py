@@ -482,15 +482,38 @@ st.plotly_chart(fig, use_container_width=True)
 
 import streamlit as st
 
-def gbxml_to_streamlit(gbxml_file):
-    # Read the GBXML file
-    with open(gbxml_file, "r") as f:
-        gbxml_data = f.read()
+def threejs_component(model_path):
+    # Create a custom component using Three.js
+    component = """
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+    <script>
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(400, 400);
+    document.body.appendChild(renderer.domElement);
 
-    # Show the GBXML data as a text area in the Streamlit app
-    st.write("GBXML File Contents:")
-    st.text_area(gbxml_data, height=400)
+    var loader = new THREE.3DSLoader();
+    loader.load("{model_path}", function (object) {{
+        scene.add(object);
+        object.position.y -= 60;
+        object.position.z = -100;
+        object.scale.set(0.05, 0.05, 0.05);
+    }});
 
-# Call the function with a sample GBXML file
-gbxml_to_streamlit("sample.xml")
+    var animate = function () {{
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }};
+    animate();
+    </script>
+    """.format(model_path=model_path)
 
+    return component
+
+def threejs_to_streamlit(model_path):
+    # Show the custom component in the Streamlit app
+    st.write(threejs_component(model_path), unsafe_allow_html=True)
+
+# Call the function with a sample 3DS file
+threejs_to_streamlit("sample.3ds")
