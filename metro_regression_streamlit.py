@@ -543,7 +543,7 @@ import streamlit as st
 html_string = obj2html("test.obj", html_elements_only=True)
 
 if st.button("Render in new window"):
-    new_window = window.open("", "Render", "height=500,width=800")
+    new_window = window.open("test.obj", height=500, width=800)
     new_window.document.body.innerHTML = html_string
 
 
