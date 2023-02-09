@@ -517,6 +517,11 @@ model_file = st.file_uploader("Upload your .obj file", type=["obj"])
 if model_file is not None:
     html_string = obj2html(model_file, html_elements_only=True)
     components.html(html_string)
-    with open(model_file) as f:
-        st.download_button('Download model.obj', f, file_name="download_name.obj")
+with open(model_file) as f:
+    st.download_button('Download model.obj', f, file_name="download_name.obj")
 
+# # 학습할 파일을 직접 업로드 하고 싶을때
+# uploaded_file = st.file_uploader("Choose a file")
+# if uploaded_file is not None:
+#   df_raw = pd.read_excel(uploaded_file)
+#   st.write(df_raw)
