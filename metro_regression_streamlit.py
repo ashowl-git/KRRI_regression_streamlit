@@ -480,40 +480,12 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 import streamlit as st
+import py3d
 
-def threejs_component():
-    # Create a custom component using Three.js
-    component = <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-    <script>
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(400, 400);
-    document.body.appendChild(renderer.domElement);
+st.header("3D Model Viewer")
 
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
-    var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    var cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+model_file = st.file_uploader("Upload your .3ds file", type=["3ds"])
 
-    camera.position.z = 5;
-
-    var animate = function () {{
-        requestAnimationFrame(animate);
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        renderer.render(scene, camera);
-    }};
-    animate();
-    </script>
-    
-
-    return component
-
-def threejs_to_streamlit():
-    # Show the custom component in the Streamlit app
-    st.write(threejs_component(), unsafe_allow_html=True)
-
-# Call the function to display the custom component in the Streamlit app
-threejs_to_streamlit()
-
+if model_file is not None:
+    mesh = py3d.read_triangle_mesh(model_file)
+    st.py3d_chart(mesh)
