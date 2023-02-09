@@ -524,7 +524,7 @@ obj_options={
   "scale_z": 30,
 }
 
-obj2html(r"test.obj", camera, light, obj_options, html_elements_only=True)
+obj2html(r"test.obj", html_elements_only=True)
 
 # html_string = obj2html(r"test.obj", camera, light, obj_options, html_elements_only=True)
 
