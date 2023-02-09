@@ -479,7 +479,6 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
-
 import streamlit as st
 
 def threejs_component(model_path):
