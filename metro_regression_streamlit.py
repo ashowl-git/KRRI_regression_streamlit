@@ -480,5 +480,17 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
+import streamlit as st
 
+def gbxml_to_streamlit(gbxml_file):
+    # Read the GBXML file
+    with open(gbxml_file, "r") as f:
+        gbxml_data = f.read()
+
+    # Show the GBXML data as a text area in the Streamlit app
+    st.write("GBXML File Contents:")
+    st.text_area(gbxml_data, height=400)
+
+# Call the function with a sample GBXML file
+gbxml_to_streamlit("sample.gbxml")
 
