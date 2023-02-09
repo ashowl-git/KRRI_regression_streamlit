@@ -13,3 +13,4 @@ matplotlib
 chart_studio
 cufflinks
 xlsxwriter
+py3d
