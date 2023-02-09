@@ -523,11 +523,15 @@ obj_options={
   "scale_y": 30,
   "scale_z": 30,
 }
-html_string = obj2html(r"test.obj", camera, light, obj_options, )
-components.html(html_string)
-# Download .obj button
-with open(r"test.obj") as f:
-    st.download_button('Download model.obj', f, file_name="download_name.obj")
+
+obj2html(r"test.obj", camera, light, obj_options, html_elements_only=True)
+
+# html_string = obj2html(r"test.obj", camera, light, obj_options, html_elements_only=True)
+
+# components.html(html_string)
+# # Download .obj button
+# with open(r"test.obj") as f:
+#     st.download_button('Download model.obj', f, file_name="download_name.obj")
 
 
 
