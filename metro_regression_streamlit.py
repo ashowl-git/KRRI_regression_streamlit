@@ -540,7 +540,7 @@ with open(r"test.obj") as f:
 
 import streamlit as st
 
-html_string = obj2html("lander.obj", html_elements_only=True)
+html_string = obj2html("test.obj", html_elements_only=True)
 
 if st.button("Render in new window"):
     new_window = window.open("", "Render", "height=500,width=800")
