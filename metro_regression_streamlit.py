@@ -481,7 +481,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 import streamlit as st
 
-def threejs_component(model_path):
+def threejs_component():
     # Create a custom component using Three.js
     component = """
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
@@ -492,28 +492,29 @@ def threejs_component(model_path):
     renderer.setSize(400, 400);
     document.body.appendChild(renderer.domElement);
 
-    var loader = new THREE.3DSLoader();
-    loader.load("{model_path}", function (object) {{
-        scene.add(object);
-        object.position.y -= 60;
-        object.position.z = -100;
-        object.scale.set(0.05, 0.05, 0.05);
-    }});
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    var cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    camera.position.z = 5;
 
     var animate = function () {{
         requestAnimationFrame(animate);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
         renderer.render(scene, camera);
     }};
     animate();
     </script>
-    """.format(model_path=model_path)
+    """
 
     return component
 
-def threejs_to_streamlit(model_path):
+def threejs_to_streamlit():
     # Show the custom component in the Streamlit app
-    st.write(threejs_component(model_path), unsafe_allow_html=True)
+    st.write(threejs_component(), unsafe_allow_html=True)
 
-# Call the function with a sample 3DS file
-threejs_to_streamlit("sample.3ds")
+# Call the function to display the custom component in the Streamlit app
+threejs_to_streamlit()
 
