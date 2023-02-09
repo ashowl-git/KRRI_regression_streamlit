@@ -513,7 +513,7 @@ from obj2html import obj2html
 
 st.header("3D Model Viewer")
 
-model_file = st.file_uploader("Upload your .obj file", type=["obj"])
+model_file = st.file_uploader("Upload your .obj file")
 if model_file is not None:
     html_string = obj2html(model_file, html_elements_only=True)
     components.html(html_string)
