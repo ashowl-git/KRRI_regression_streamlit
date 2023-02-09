@@ -526,7 +526,7 @@ from obj2html import obj2html
 
 # obj2html("test.obj", html_elements_only=True)
 
-html_string = obj2html(r"test.obj",html_elements_only=True)
+html_string = obj2html(r"test.obj",html_elements_only=True, hight=800)
 
 components.html(html_string)
 # Download .obj button
