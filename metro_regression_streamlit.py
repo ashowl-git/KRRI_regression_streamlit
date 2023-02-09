@@ -496,42 +496,42 @@ import streamlit as st
 import streamlit.components.v1 as components
 from obj2html import obj2html
 # 3D view
-camera={
-  "fov": 45,
-  "aspect": 2,
-  "near": 0.1,
-  "far": 100,
-  "pos_x": 0,
-  "pos_y": 10,
-  "pos_z": 20,
-  "orbit_x": 0,
-  "orbit_y": 5,
-  "orbit_z": 0,
-},
-light={
-  "color": "0xFFFFFF",
-  "intensity": 1,
-  "pos_x": 0,
-  "pos_y": 10,
-  "pos_z": 0,
-  "target_x": -5,
-  "target_y": 0,
-  "target_z": 0,
-},
-obj_options={
-  "scale_x": 30,
-  "scale_y": 30,
-  "scale_z": 30,
-}
+# camera={
+#   "fov": 45,
+#   "aspect": 2,
+#   "near": 0.1,
+#   "far": 100,
+#   "pos_x": 0,
+#   "pos_y": 10,
+#   "pos_z": 20,
+#   "orbit_x": 0,
+#   "orbit_y": 5,
+#   "orbit_z": 0,
+# },
+# light={
+#   "color": "0xFFFFFF",
+#   "intensity": 1,
+#   "pos_x": 0,
+#   "pos_y": 10,
+#   "pos_z": 0,
+#   "target_x": -5,
+#   "target_y": 0,
+#   "target_z": 0,
+# },
+# obj_options={
+#   "scale_x": 30,
+#   "scale_y": 30,
+#   "scale_z": 30,
+# }
 
-obj2html("test.obj", 'index.html', camera, light, obj_options, html_elements_only=True)
+# obj2html("test.obj", html_elements_only=True)
 
-# html_string = obj2html(r"test.obj", camera, light, obj_options, html_elements_only=True)
+html_string = obj2html(r"test.obj",html_elements_only=True)
 
-# components.html(html_string)
-# # Download .obj button
-# with open(r"test.obj") as f:
-#     st.download_button('Download model.obj', f, file_name="download_name.obj")
+components.html(html_string)
+# Download .obj button
+with open(r"test.obj") as f:
+    st.download_button('Download model.obj', f, file_name="download_name.obj")
 
 
 
