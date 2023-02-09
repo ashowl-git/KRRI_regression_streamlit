@@ -483,7 +483,7 @@ import streamlit as st
 
 def threejs_component():
     # Create a custom component using Three.js
-    component = """
+    component = 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
     <script>
     var scene = new THREE.Scene();
@@ -507,7 +507,7 @@ def threejs_component():
     }};
     animate();
     </script>
-    """
+    
 
     return component
 
