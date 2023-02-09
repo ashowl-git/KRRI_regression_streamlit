@@ -489,3 +489,6 @@ model_file = st.file_uploader("Upload your .3ds file", type=["3ds"])
 if model_file is not None:
     mesh = py3d.read_triangle_mesh(model_file)
     st.py3d_chart(mesh)
+
+# mesh = py3d.read_triangle_mesh('sample.3ds')
+# py3d_chart(mesh)
