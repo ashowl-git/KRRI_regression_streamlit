@@ -516,3 +516,4 @@ def threejs_to_streamlit(model_path):
 
 # Call the function with a sample 3DS file
 threejs_to_streamlit("sample.3ds")
+
