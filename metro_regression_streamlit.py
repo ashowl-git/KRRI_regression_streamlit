@@ -506,7 +506,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from obj2html import obj2html
 # 3D view
-html_string = obj2html("test2.obj", html_elements_only=True)
+html_string = obj2html("test2.obj", html_elements_only=False)
 components.html(html_string)
 # Download .obj button
 with open("test2.obj") as f:
