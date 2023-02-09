@@ -496,10 +496,10 @@ import streamlit as st
 import streamlit.components.v1 as components
 from obj2html import obj2html
 # 3D view
-html_string = obj2html("test.obj", html_elements_only=True)
+html_string = obj2html(r"test.obj", html_elements_only=True)
 components.html(html_string)
 # Download .obj button
-with open("test.obj") as f:
+with open(r"test.obj") as f:
     st.download_button('Download model.obj', f, file_name="download_name.obj")
 
 
@@ -514,11 +514,11 @@ from obj2html import obj2html
 st.header("3D Model Viewer")
 model_file = st.file_uploader("Upload your .obj file", type=['obj'])
 
-# if model_file is not None:
-html_string = obj2html(model_file, html_elements_only=True)
-components.html(html_string)
-with open(model_file) as f:
-    st.download_button('Download model.obj', f, file_name="download_name.obj")
+if model_file is not None:
+    html_string = obj2html(model_file, html_elements_only=True)
+    components.html(html_string)
+    with open(model_file) as f:
+        st.download_button('Download model.obj', f, file_name="download_name.obj")
 
 
 
