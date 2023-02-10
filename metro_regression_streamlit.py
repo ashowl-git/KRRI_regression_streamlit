@@ -577,7 +577,6 @@ import streamlit as st
 import py3d
 
 
-
 def load_3ds_file(file_path):
     return py3d.read_3ds_file(file_path)
 
