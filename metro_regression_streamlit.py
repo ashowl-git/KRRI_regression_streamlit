@@ -551,18 +551,18 @@ if st.button("Render in new window"):
 
 
 
-# import streamlit as st
-# import streamlit.components.v1 as components
-# from obj2html import obj2html
+import streamlit as st
+import streamlit.components.v1 as components
+from obj2html import obj2html
 
-# st.header("3D Model Viewer 수정중")
-# model_file = st.file_uploader("Upload your .obj file", type=['obj'])
+st.header("3D Model Viewer 수정중")
+model_file = st.file_uploader("Upload your obj file", type=['obj'])
 
-# if model_file is not None:
-#     html_string = obj2html(model_file, html_elements_only=True)
-#     components.html(html_string)
-#     with open(model_file) as f:
-#         st.download_button('Download model.obj', f, file_name="download_name.obj")
+if model_file is not None:
+    html_string = obj2html(model_file, html_elements_only=True)
+    components.html(html_string)
+    with open(model_file) as f:
+        st.download_button('Download model.obj', f, file_name="download_name.obj")
 
 
 
@@ -576,21 +576,17 @@ if st.button("Render in new window"):
 import streamlit as st
 import py3d
 
-# @st.cache(allow_output_mutation=True)
-mesh1 = py3d.read_3ds_file('sample.3ds')
-st.pyplot.figure(figsize=(10, 10))
-py3d.plot_3d(mesh)
 
 
-# def load_3ds_file(file_path):
-#     return py3d.read_3ds_file(file_path)
+def load_3ds_file(file_path):
+    return py3d.read_3ds_file(file_path)
 
-# def display_3ds_file(file_path):
-#     mesh = load_3ds_file(file_path)
-#     st.pyplot.figure(figsize=(10, 10))
-#     py3d.plot_3d(mesh)
+def display_3ds_file(file_path):
+    mesh = load_3ds_file(file_path)
+    st.pyplot.figure(figsize=(10, 10))
+    py3d.plot_3d(mesh)
 
-# file_path = st.file_uploader("Upload a 3DS file", type=["3ds"])
+file_path = st.file_uploader("Upload a 3DS file", type=["3ds"])
 
-# if file_path is not None:
-#     display_3ds_file(file_path)
+if file_path is not None:
+    display_3ds_file(file_path)
