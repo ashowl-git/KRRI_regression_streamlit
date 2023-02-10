@@ -576,8 +576,8 @@ if st.button("Render in new window"):
 import streamlit as st
 import py3d
 
-@st.cache(allow_output_mutation=True)
-mesh = py3d.read_3ds_file('sample.3ds')
+# @st.cache(allow_output_mutation=True)
+mesh1 = py3d.read_3ds_file('sample.3ds')
 st.pyplot.figure(figsize=(10, 10))
 py3d.plot_3d(mesh)
 
