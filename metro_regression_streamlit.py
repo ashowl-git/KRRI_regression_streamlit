@@ -576,7 +576,7 @@ if st.button("Render in new window"):
 import streamlit as st
 import py3d
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def load_3ds_file(file_path):
     return py3d.read_3ds_file(file_path)
 
