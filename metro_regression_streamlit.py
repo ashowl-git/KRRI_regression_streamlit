@@ -71,6 +71,9 @@ from sklearn.metrics import mean_squared_log_error
 # page_names_to_funcs[selected_page]()
 
 
+st.set_page_config(layout="wide", page_title="KRRI_subway_Energy")
+
+
 
 # 학습파일 불러오기
 df_raw = pd.read_excel('data/metro_sim_month.xlsx')
