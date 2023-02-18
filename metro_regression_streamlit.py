@@ -88,7 +88,9 @@ hide_menu_style = """
         footer:after {content:'Copyright @ 2023: KRRI all rights reserved';
         display:block;
         opsition:relatiive;
-        color:tomato;}
+        color:tomato;
+        padding:10px
+        top:10px}
 
         </style>
         """
