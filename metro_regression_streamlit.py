@@ -87,6 +87,9 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 # page_names_to_funcs[selected_page]()
 
 
+st.set_page_config(layout="wide", page_title="KRRI_subway_Energy")
+
+
 
 # 학습파일 불러오기
 df_raw = pd.read_excel('data/metro_sim_month.xlsx')
@@ -512,21 +515,59 @@ import streamlit as st
 import streamlit.components.v1 as components
 from obj2html import obj2html
 # 3D view
-html_string = obj2html(r"test.obj", html_elements_only=True)
+# camera={
+#   "fov": 45,
+#   "aspect": 2,
+#   "near": 0.1,
+#   "far": 100,
+#   "pos_x": 0,
+#   "pos_y": 10,
+#   "pos_z": 20,
+#   "orbit_x": 0,
+#   "orbit_y": 5,
+#   "orbit_z": 0,
+# },
+# light={
+#   "color": "0xFFFFFF",
+#   "intensity": 1,
+#   "pos_x": 0,
+#   "pos_y": 10,
+#   "pos_z": 0,
+#   "target_x": -5,
+#   "target_y": 0,
+#   "target_z": 0,
+# },
+# obj_options={
+#   "scale_x": 30,
+#   "scale_y": 30,
+#   "scale_z": 30,
+# }
+
+# obj2html("test.obj", html_elements_only=True)
+
+html_string = obj2html(r"test.obj",html_elements_only=True)
+
 components.html(html_string)
 # Download .obj button
 with open(r"test.obj") as f:
     st.download_button('Download model.obj', f, file_name="download_name.obj")
 
+
+
+
+
+
 import streamlit as st
-import streamlit.components.v1 as components
-from obj2html import obj2html
-# 3D view
-html_string = obj2html("test2.obj", html_elements_only=True)
-components.html(html_string)
-# Download .obj button
-with open("test2.obj") as f:
-    st.download_button('Download model.obj', f, file_name="download_name.obj")
+
+html_string = obj2html("test.obj", html_elements_only=True)
+
+if st.button("Render in new window"):
+    new_window = window.open("test.obj", height=500, width=800)
+    new_window.document.body.innerHTML = html_string
+
+
+
+
 
 
 import streamlit as st
@@ -534,7 +575,7 @@ import streamlit.components.v1 as components
 from obj2html import obj2html
 
 st.header("3D Model Viewer 수정중")
-model_file = st.file_uploader("Upload your .obj file", type=['obj'])
+model_file = st.file_uploader("Upload your obj file", type=['obj'])
 
 if model_file is not None:
     html_string = obj2html(model_file, html_elements_only=True)
@@ -549,3 +590,21 @@ if model_file is not None:
 # if uploaded_file is not None:
 #   df_raw = pd.read_excel(uploaded_file)
 #   st.write(df_raw)
+
+
+import streamlit as st
+import py3d
+
+
+def load_3ds_file(file_path):
+    return py3d.read_3ds_file(file_path)
+
+def display_3ds_file(file_path):
+    mesh = load_3ds_file(file_path)
+    st.pyplot.figure(figsize=(10, 10))
+    py3d.plot_3d(mesh)
+
+file_path = st.file_uploader("Upload a 3DS file", type=["3ds"])
+
+if file_path is not None:
+    display_3ds_file(file_path)
