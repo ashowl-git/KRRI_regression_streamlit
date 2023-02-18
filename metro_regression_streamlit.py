@@ -82,11 +82,16 @@ from sklearn.metrics import mean_squared_log_error
 
 # # hide the hamburger menu?
 hide_menu_style = """
-<style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-</style>
-"""
+        <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: visible;}
+        footer:after {content:'Copyright @ 2023: streamlit';
+        display:block;
+        opsition:relatiive;
+        color:tomato;}
+
+        </style>
+        """
 
 st.set_page_config(layout="wide", page_title="KRRI_subway_Energy")
 
