@@ -85,7 +85,7 @@ hide_menu_style = """
         <style>
         #MainMenu {visibility: hidden;}
         footer {visibility: visible;}
-        footer:after {content:'Copyright @ 2023: KRRI all rights reserved';
+        footer:after {content:'Copyright @ 2023: 한국철도기술연구원 all rights reserved';
         display:block;
         opsition:relatiive;
         color:tomato;
