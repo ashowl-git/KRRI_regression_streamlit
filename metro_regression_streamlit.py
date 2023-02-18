@@ -79,17 +79,19 @@ from sklearn.metrics import mean_squared_log_error
 # selected_page = st.sidebar.selectbox("Select a page", page_names_to_funcs.keys())
 # page_names_to_funcs[selected_page]()
 
+
+# # hide the hamburger menu?
 hide_menu_style = """
         <style>
         #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
         </style>
         """
-        
+
 st.set_page_config(layout="wide", page_title="KRRI_subway_Energy")
 
-# # hide the hamburger menu?
 
-st.markdown(hide_menu_style, unsafe_allow_html=True)
+st.markdown(hide_menu_style, unsafe_allow_html=True) # hide the hamburger menu?
 
 
 
