@@ -84,8 +84,8 @@ from sklearn.metrics import mean_squared_log_error
 hide_menu_style = """
         <style>
         #MainMenu {visibility: hidden;}
-        footer {visibility: hidden;}
-        footer:after {content:'Copyright @ 2023: streamlit';
+        footer {visibility: visible;}
+        footer:after {content:'Copyright @ 2023: KRRI all rights reserved';
         display:block;
         opsition:relatiive;
         color:tomato;}
