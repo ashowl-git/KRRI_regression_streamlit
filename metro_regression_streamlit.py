@@ -89,8 +89,8 @@ hide_menu_style = """
         display:block;
         opsition:relatiive;
         color:tomato;
-        padding:10px
-        top:10px}
+        padding:10px;
+        top:10px;}
 
         </style>
         """
