@@ -96,8 +96,6 @@ hide_menu_style = """
         """
 
 st.set_page_config(layout="wide", page_title="KRRI_subway_Energy")
-
-
 st.markdown(hide_menu_style, unsafe_allow_html=True) # hide the hamburger menu?
 
 
