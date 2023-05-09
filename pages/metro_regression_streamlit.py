@@ -654,10 +654,13 @@ st.download_button(
 )
 
 
-@st.cache_data  # 👈 Set the parameter
+# @st.cache_data  # 👈 Set the parameter
+# def get_data():
+#     DF4 = df_concat
+#     return DF4
+
+
+
+@st.cache_data
 def get_data():
-    DF4 = df_concat
-    return DF4
-
-
-# st.dataframe(data)
+    st.dataframe(df_concat)
