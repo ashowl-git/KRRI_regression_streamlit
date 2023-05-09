@@ -151,14 +151,14 @@ st.subheader('에너지 사용량 예측값')
 st.caption('metro regression streamlit 불러온 값 ', unsafe_allow_html=False)
 
 
-# uploaded_file = st.file_uploader("Choose a file")
-# if uploaded_file is not None:
-#   DF4 = pd.read_csv(uploaded_file)
-#   st.write(DF4)
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+  DF4 = pd.read_csv(uploaded_file)
+  st.write(DF4)
 
-from metro_regression_streamlit import get_dataframe
-DF4 = get_dataframe()
-st.write(DF4)
+# from metro_regression_streamlit import get_dataframe
+# DF4 = get_dataframe()
+# st.write(DF4)
 
 # base 소요량 합계(보정계수 곱) = hh
 st.subheader('base 소요량 합계(보정계수 곱)')
@@ -202,7 +202,5 @@ st.caption('선택한 ZEB등급 취득을 위해 필요한 에너지 절감량(b
 result2.at['최대값', 'base']
 st.caption('선택한 ZEB등급 취득을 위해 필요한 에너지 절감량(Alt_1 기준, 단위: Kwh/m2yr)', unsafe_allow_html=False)
 result2.at['최대값', 'Alt_1']
-
-
 
 
