@@ -41,17 +41,21 @@ from sklearn.metrics import mean_absolute_percentage_error
 from sklearn.metrics import mean_squared_log_error
 
 #필요한 데이터 불러오기
-df1 = pd.read_excel('data/일사량DB.xlsx')
-df2 = pd.read_excel('data/경사일사량DB.xlsx')
-df3 = pd.read_excel('data/맑은날DB.xlsx')
+df1 = pd.read_excel('../data/일사량DB.xlsx')
+df2 = pd.read_excel('../data/경사일사량DB.xlsx')
+df3 = pd.read_excel('../data/맑은날DB.xlsx')
 
 #사이드메뉴바 만들기
 st.sidebar.header('Specify Input Parameters')
+
 #집광면적
 LENGTH = st.sidebar.number_input('LENGTH (mm)', 0, 5000, 1300)
 WIDTH = st.sidebar.number_input('WIDTH (mm)', 0, 5000, 1300)
 EA = st.sidebar.number_input('EA', 0, 100000, 100)
+
 집광면적 = LENGTH*WIDTH*EA/1000000
+
+
 #설비용량
 설치용량 = st.sidebar.number_input('설치용량 [W]', 0, 1000, 450)
 설비용량 = 설치용량*EA/1000
@@ -120,4 +124,36 @@ st.line_chart(gg, use_container_width=True)
 
 
 
+import streamlit as st
+import pandas as pd
+import mysql.connector
 
+# MySQL 서버에 연결
+conn = mysql.connector.connect(
+    host="localhost",
+    port=3306,
+    database="mydatabase",
+    user="myusername",
+    password="mypassword"
+)
+
+# DataFrame 생성
+df = pd.DataFrame({
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35]
+})
+
+# DataFrame을 MySQL 데이터베이스에 저장
+cursor = conn.cursor()
+table_name = 'mytable'
+columns = ', '.join(df.columns)
+values = [tuple(row) for row in df.values]
+values_template = ', '.join(['%s'] * len(df.columns))
+query = f'INSERT INTO {table_name} ({columns}) VALUES ({values_template})'
+cursor.executemany(query, values)
+conn.commit()
+
+# 저장된 데이터 확인
+cursor.execute(f'SELECT * FROM {table_name}')
+result = cursor.fetchall()
+st.write(pd.DataFrame(result, columns=df.columns))

@@ -6,6 +6,10 @@ from subprocess import Popen, PIPE
 import numpy as np
 import pandas as pd
 
+import PVmodule
+
+
+
 import streamlit as st
 import sklearn
 import seaborn as sns
