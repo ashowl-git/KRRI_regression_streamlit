@@ -47,15 +47,6 @@ from sklearn.metrics import mean_squared_log_error
 
 
 
-
-
-
-
-
-
-
-
-
 # import streamlit as st
 
 # def main_page():
@@ -79,37 +70,12 @@ from sklearn.metrics import mean_squared_log_error
 # selected_page = st.sidebar.selectbox("Select a page", page_names_to_funcs.keys())
 # page_names_to_funcs[selected_page]()
 
+## 필요한 데이터 불러오기
+DF1 = pd.read_excel('data/일사량DB.xlsx')
 
-# # hide the hamburger menu?
-hide_menu_style = """
-        <style>
-        #MainMenu {visibility: hidden;}
-        footer {visibility: visible;}
-        footer:after {content:'Copyright @ 2023: 한국철도기술연구원 all rights reserved';
-        display:block;
-        opsition:relatiive;
-        color:tomato;
-        padding:5px;
-        top:100px;}
+DF2 = pd.read_excel('data/경사일사량DB.xlsx')
 
-        </style>
-        """
-
-st.set_page_config(layout="wide", page_title="KRRI_subway_Energy")
-st.markdown(hide_menu_style, unsafe_allow_html=True) # hide the hamburger menu?
-
-
-
-
-
-
-
-
-
-
-
-
-
+DF3 = pd.read_excel('data/맑은날DB.xlsx')
 
 # 학습파일 불러오기
 df_raw = pd.read_excel('data/metro_sim_month.xlsx')
@@ -123,8 +89,6 @@ uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
   df_raw = pd.read_excel(uploaded_file)
   st.write(df_raw)
-
-
 
 # df_raw.columns
 df_raw2 = df_raw.copy()
@@ -317,7 +281,6 @@ df2_input = user_input_features2()
 
 result2 = lr2.predict(df2_input)
 
-
 st.subheader('에너지 사용량 예측값')
 st.caption('좌측의 변수항목 슬라이더 조정 ', unsafe_allow_html=False)
 st.caption('--------- ', unsafe_allow_html=False)
@@ -329,6 +292,7 @@ df_result2 = pd.DataFrame(result2, columns=lm_result_features2).T.rename(columns
 
 df_result['Alt'] = 'BASE'
 df_result2['Alt'] = 'Alt_1'
+
 df_result['kW/m2'] = df_result['kW'] / df_input['Occupied_floor_area'][0]
 df_result2['kW/m2'] = df_result2['kW'] / df2_input['Occupied_floor_area_2'][0]
 
@@ -461,18 +425,6 @@ fig.update_xaxes(rangeslider_visible=True)
 # fig
 st.plotly_chart(fig, use_container_width=True)
 
-
-
-
-
-
-
-
-
-
-
-
-
 # 예측값을 데이터 프레임으로 만들어본것을 그래프로 그려보기
 
 st.subheader('월별 에너지 사용량 예측값 그래프')
@@ -499,166 +451,55 @@ fig.update_layout(barmode='group') #alt별 구분
 # fig
 st.plotly_chart(fig, use_container_width=True)
 
-
-
-
 # df_describe = df_concat.describe()
 # df_describe
-
-
-
-
-
-
 
 # fig = px.bar(df_result_merge, x='Month', y=['BASE_kW','ALT_kW'], title='ALT ',color='index' )
 # fig.update_xaxes(rangeslider_visible=True)
 # fig.update_layout(barmode='group')
 # fig
 
-
-
-
-
-# import streamlit as st
-# import py3d
-
-# st.header("3D Model Viewer")
-
-# model_file = st.file_uploader("Upload your .3ds file", type=["3ds"])
-
-# if model_file is not None:
-#     mesh = py3d.read_triangle_mesh(model_file)
-#     st.py3d_chart(mesh)
-
-
-
-import streamlit as st
-import streamlit.components.v1 as components
-from obj2html import obj2html
-# 3D view
-# camera={
-#   "fov": 45,
-#   "aspect": 2,
-#   "near": 0.1,
-#   "far": 100,
-#   "pos_x": 0,
-#   "pos_y": 10,
-#   "pos_z": 20,
-#   "orbit_x": 0,
-#   "orbit_y": 5,
-#   "orbit_z": 0,
-# },
-# light={
-#   "color": "0xFFFFFF",
-#   "intensity": 1,
-#   "pos_x": 0,
-#   "pos_y": 10,
-#   "pos_z": 0,
-#   "target_x": -5,
-#   "target_y": 0,
-#   "target_z": 0,
-# },
-# obj_options={
-#   "scale_x": 30,
-#   "scale_y": 30,
-#   "scale_z": 30,
-# }
-
-# obj2html("test.obj", html_elements_only=True)
-
-html_string = obj2html(r"test.obj",html_elements_only=True)
-
-components.html(html_string)
-# Download .obj button
-with open(r"test.obj") as f:
-    st.download_button('Download model.obj', f, file_name="download_name.obj")
-
-
-
-
-
-
 import streamlit as st
 
-html_string = obj2html("test.obj", html_elements_only=True)
+def threejs_component(model_path):
+    # Create a custom component using Three.js
+    component = """
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+    <script>
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(400, 400);
+    document.body.appendChild(renderer.domElement);
 
-if st.button("Render in new window"):
-    new_window = window.open("test.obj", height=500, width=800)
-    new_window.document.body.innerHTML = html_string
+    var loader = new THREE.3DSLoader();
+    loader.load("{model_path}", function (object) {{
+        scene.add(object);
+        object.position.y -= 60;
+        object.position.z = -100;
+        object.scale.set(0.05, 0.05, 0.05);
+    }});
 
+    var animate = function () {{
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }};
+    animate();
+    </script>
+    """.format(model_path=model_path)
 
+    return component
 
+def threejs_to_streamlit(model_path):
+    # Show the custom component in the Streamlit app
+    st.write(threejs_component(model_path), unsafe_allow_html=True)
 
+# Call the function with a sample 3DS file
+threejs_to_streamlit("sample.3ds")
 
+#if st.button("내보내기") : 
+#    df_concat.to_excel('data/df_concat.xlsx')
 
-import streamlit as st
-import streamlit.components.v1 as components
-from obj2html import obj2html
-
-st.header("3D Model Viewer 수정중")
-model_file = st.file_uploader("Upload your obj file", type=['obj'])
-
-if model_file is not None:
-    html_string = obj2html(model_file, html_elements_only=True)
-    components.html(html_string)
-    with open(model_file) as f:
-        st.download_button('Download model.obj', f, file_name="download_name.obj")
-
-
-
-# # 학습할 파일을 직접 업로드 하고 싶을때
-# uploaded_file = st.file_uploader("Choose a file")
-# if uploaded_file is not None:
-#   df_raw = pd.read_excel(uploaded_file)
-#   st.write(df_raw)
-
-
-import streamlit as st
-import py3d
-
-
-def load_3ds_file(file_path):
-    return py3d.read_3ds_file(file_path)
-
-def display_3ds_file(file_path):
-    mesh = load_3ds_file(file_path)
-    st.pyplot.figure(figsize=(10, 10))
-    py3d.plot_3d(mesh)
-
-file_path = st.file_uploader("Upload a 3DS file", type=["3ds"])
-
-if file_path is not None:
-    display_3ds_file(file_path)
-
-if st.button("내보내기") : 
-  df_concat.to_excel('data/df_concat.xlsx')
-
-# @st.cache_data
-# global concat
-# concat = df_concat
-
-
-@st.cache_data
-def convert_df(df_concat):
-   return df_concat.to_csv(index=False).encode('utf-8')
-
-
-csv_df_concat = convert_df(df_concat)
-
-st.download_button(
-   "Press to Download",
-   csv_df_concat,
-   "file.csv",
-   "text/csv",
-   key='download-csv'
-)
-
-
-@st.cache_data  # 👈 Set the parameter
-def get_data():
-    DF4 = df_concat
-    return DF4
-
-
-# # st.dataframe(data)
+global DF4
+DF4 = df_concat
+st.dataframe(DF4)
