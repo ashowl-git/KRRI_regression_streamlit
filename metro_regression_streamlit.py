@@ -638,7 +638,7 @@ if st.button("내보내기") :
 
 
 
-@st.experimental_memo
+@st.cache_data
 def convert_df(df_concat):
    return df_concat.to_csv(index=False).encode('utf-8')
 
