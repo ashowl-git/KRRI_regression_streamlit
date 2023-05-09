@@ -158,6 +158,7 @@ st.caption('metro regression streamlit 불러온 값 ', unsafe_allow_html=False)
 
 from metro_regression_streamlit import get_dataframe
 DF4 = get_dataframe()
+st.write(DF4)
 
 # base 소요량 합계(보정계수 곱) = hh
 st.subheader('base 소요량 합계(보정계수 곱)')
