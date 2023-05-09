@@ -628,3 +628,8 @@ file_path = st.file_uploader("Upload a 3DS file", type=["3ds"])
 
 if file_path is not None:
     display_3ds_file(file_path)
+
+
+
+if st.button("내보내기") : 
+  df_concat.to_excel('data/df_concat.xlsx')
