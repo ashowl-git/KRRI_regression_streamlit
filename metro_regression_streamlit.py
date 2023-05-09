@@ -5,6 +5,7 @@
 # conda install -c conda-forge cufflinks-py
 # conda install seaborn
    
+
 import glob 
 import os
 import sys, subprocess
@@ -497,10 +498,18 @@ def threejs_to_streamlit(model_path):
 # Call the function with a sample 3DS file
 threejs_to_streamlit("sample.3ds")
 
-#if st.button("내보내기") : 
-#    df_concat.to_excel('data/df_concat.xlsx')
 
-@st.cache
-global DF4
-DF4 = df_concat
-st.dataframe(DF4)
+@st.cache_data
+def convert_df(df_concat):
+   return df_concat.to_csv(index=False).encode('utf-8')
+
+
+csv = convert_df(df_concat)
+
+st.download_button(
+   "Press to Download",
+   csv,
+   "file.csv",
+   "text/csv",
+   key='download-csv'
+)'

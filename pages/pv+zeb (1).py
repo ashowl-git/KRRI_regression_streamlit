@@ -51,12 +51,9 @@ DF5 = pd.read_excel('data/신재생DB.xlsx')
 
 DF6 = pd.read_excel('data/제로db.xlsx')
 
-uploaded_file = st.file_uploader("Choose a file")
-if uploaded_file is not None:
-  df_raw = pd.read_csv(uploaded_file)
-  st.write(df_raw)
 
 
+# df_concat
 
 #사이드메뉴바 만들기
 st.sidebar.header('Solar Information')
@@ -139,63 +136,69 @@ Occupied_floor_area_2 = st.sidebar.number_input('Occupied_floor_area_2', 5000, 1
 
 제로에너지등급 = st.sidebar.number_input('제로에너지등급', 1, 5, 5)
 A = DF6[제로에너지등급]
-##st.dataframe(A)
 
-if st.button("불러오기") : 
-    st.subheader('에너지 사용량 예측값')
-    st.caption('metro regression streamlit 불러온 값 ', unsafe_allow_html=False)
-    DF4=pd.read_excel('data/df_concat.xlsx')
-    st.dataframe(DF4)
 
-    # base 소요량 합계(보정계수 곱) = hh
-    st.subheader('base 소요량 합계(보정계수 곱)')
-    h = DF4.loc[(DF4['Alt'] == 'BASE')]
-    ss= h[h['index'].str.contains('Room_Elec')].index
-    h.drop(ss, inplace=True)
-    h
-    hh=h['kW/m2'].sum()*2.75
-    hh
-   
 
-    # Alt_1 소요량 합계(보정계수 곱) = ii
-    st.subheader('Alt_1 소요량 합계(보정계수 곱)')
-    i = DF4.loc[(DF4['Alt'] == 'Alt_1')]
-    spac= i[i['index'].str.contains('Room_Elec')].index
-    i.drop(spac, inplace=True)
-    i
-    ii=i['kW/m2'].sum()*2.75
-    ii
-    
+# ##st.dataframe(A)
 
-    #기준1_에효 1++(비주거용 140 미만)
-    x = {'base':[hh-140], 'Alt_1':[ii-140]}
-    xx = pd.DataFrame(x, index=['에너지효율등급'])
-    st.dataframe(xx)
+# if st.button("불러오기") : 
+#     st.subheader('에너지 사용량 예측값')
+#     st.caption('metro regression streamlit 불러온 값 ', unsafe_allow_html=False)
+#     DF4=pd.read_excel('data/df_concat.xlsx')
+#     st.dataframe(DF4)
 
-    #기준2_제로에너지 
-    y = {'base':[A[0]/100*hh], 'Alt_1':[A[0]/100*ii]}
-    yy = pd.DataFrame(y, index=['제로에너지'])
-    st.dataframe(yy)
+st.subheader('에너지 사용량 예측값')
+st.caption('metro regression streamlit 불러온 값 ', unsafe_allow_html=False)
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+  DF4 = pd.read_csv(uploaded_file)
+  st.write(DF4)
 
-    #표 합치기
-    result = pd.concat([xx,yy])
-    ## result
 
-    #합계값
-    mm = result.max(axis=0)
-    mmm = pd.DataFrame(mm, columns=['최대값'])
-    mmm = mmm.transpose() 
-    ## mmm
 
-    # 표합치기
-    st.subheader('단위면적당 필요에너지 비교표')
-    result2 = pd.concat([result,mmm])
-    result2
 
-    st.caption('선택한 ZEB등급 취득을 위해 필요한 에너지 절감량(base 기준, 단위: Kwh/m2yr)', unsafe_allow_html=False)
-    result2.at['최대값', 'base']
-    st.caption('선택한 ZEB등급 취득을 위해 필요한 에너지 절감량(Alt_1 기준, 단위: Kwh/m2yr)', unsafe_allow_html=False)
-    result2.at['최대값', 'Alt_1']
+# base 소요량 합계(보정계수 곱) = hh
+st.subheader('base 소요량 합계(보정계수 곱)')
+h = DF4.loc[(DF4['Alt'] == 'BASE')]
+ss= h[h['index'].str.contains('Room_Elec')].index
+h.drop(ss, inplace=True)
+h
+hh=h['kW/m2'].sum()*2.75
+hh
+
+# Alt_1 소요량 합계(보정계수 곱) = ii
+st.subheader('Alt_1 소요량 합계(보정계수 곱)')
+i = DF4.loc[(DF4['Alt'] == 'Alt_1')]
+spac= i[i['index'].str.contains('Room_Elec')].index
+i.drop(spac, inplace=True)
+i
+ii=i['kW/m2'].sum()*2.75
+ii
+
+#기준1_에효 1++(비주거용 140 미만)
+x = {'base':[hh-140], 'Alt_1':[ii-140]}
+xx = pd.DataFrame(x, index=['에너지효율등급'])
+st.dataframe(xx)
+#기준2_제로에너지 
+y = {'base':[A[0]/100*hh], 'Alt_1':[A[0]/100*ii]}
+yy = pd.DataFrame(y, index=['제로에너지'])
+st.dataframe(yy)
+#표 합치기
+result = pd.concat([xx,yy])
+## resul
+#합계값
+mm = result.max(axis=0)
+mmm = pd.DataFrame(mm, columns=['최대값'])
+mmm = mmm.transpose() 
+## mm
+# 표합치기
+st.subheader('단위면적당 필요에너지 비교표')
+result2 = pd.concat([result,mmm])
+result
+st.caption('선택한 ZEB등급 취득을 위해 필요한 에너지 절감량(base 기준, 단위: Kwh/m2yr)', unsafe_allow_html=False)
+result2.at['최대값', 'base']
+st.caption('선택한 ZEB등급 취득을 위해 필요한 에너지 절감량(Alt_1 기준, 단위: Kwh/m2yr)', unsafe_allow_html=False)
+result2.at['최대값', 'Alt_1']
 
 
 
