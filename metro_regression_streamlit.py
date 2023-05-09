@@ -499,7 +499,7 @@ def threejs_to_streamlit(model_path):
 threejs_to_streamlit("sample.3ds")
 
 
-# @st.cache_data
+@st.cache_data
 def convert_df(df_concat):
    return df_concat.to_csv(index=False).encode('utf-8')
 
@@ -512,3 +512,9 @@ st.download_button(
    "text/csv",
    key='download-csv'
 )
+
+@st.cache_data
+def load_df():
+    return df_concat
+
+

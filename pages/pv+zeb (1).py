@@ -156,6 +156,14 @@ if uploaded_file is not None:
   DF4 = pd.read_csv(uploaded_file)
   st.write(DF4)
 
+
+from metro_regression_streamlit import load_df
+DF4 = load_df()
+
+
+
+
+
 # from metro_regression_streamlit import get_dataframe
 # DF4 = get_dataframe()
 # st.write(DF4)
