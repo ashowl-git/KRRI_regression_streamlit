@@ -150,10 +150,10 @@ A = DF6[제로에너지등급]
 st.subheader('에너지 사용량 예측값')
 st.caption('metro regression streamlit 불러온 값 ', unsafe_allow_html=False)
 
-# uploaded_file = st.file_uploader("Choose a file")
-# if uploaded_file is not None:
-#   DF4 = pd.read_csv(uploaded_file)
-#   st.write(DF4)
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+  DF4 = pd.read_csv(uploaded_file)
+  st.write(DF4)
 
 
 
