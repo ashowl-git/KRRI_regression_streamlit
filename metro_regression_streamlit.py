@@ -653,7 +653,10 @@ st.download_button(
    key='download-csv'
 )
 
-@st.cache_data(experimental_allow_widgets=True)  # 👈 Set the parameter
+@st.cache_data  # 👈 Set the parameter
 def get_data():
     DF4 = df_concat
     return DF4
+
+
+# st.dataframe(data)
