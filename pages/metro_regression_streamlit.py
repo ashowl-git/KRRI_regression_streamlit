@@ -654,7 +654,6 @@ st.download_button(
 )
 
 
-if __name__
 @st.cache_data  # 👈 Set the parameter
 def get_data():
     DF4 = df_concat
