@@ -513,7 +513,7 @@ st.download_button(
    key='download-csv'
 )
 
-# @st.cache_data
+@st.cache_data
 def load_df():
     return df_concat
 
