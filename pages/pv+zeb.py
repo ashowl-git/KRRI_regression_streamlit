@@ -51,12 +51,12 @@ DF5 = pd.read_excel('data/신재생DB.xlsx')
 
 DF6 = pd.read_excel('data/제로db.xlsx')
 
-uploaded_file = st.file_uploader("Choose a file")
-if uploaded_file is not None:
-  df_concat = pd.read_csv(uploaded_file)
-  st.write(df_concat)
+# uploaded_file = st.file_uploader("Choose a file")
+# if uploaded_file is not None:
+#   df_concat = pd.read_csv(uploaded_file)
+#   st.write(df_concat)
 
-df_concat
+# df_concat
 
 #사이드메뉴바 만들기
 st.sidebar.header('Solar Information')
