@@ -639,28 +639,26 @@ global concat
 concat = df_concat
 
 
+# @st.cache_data
+# def convert_df(df_concat):
+#    return df_concat.to_csv(index=False).encode('utf-8')
 
 
-@st.cache_data
-def convert_df(df_concat):
-   return df_concat.to_csv(index=False).encode('utf-8')
+# csv_df_concat = convert_df(df_concat)
+
+# st.download_button(
+#    "Press to Download",
+#    csv_df_concat,
+#    "file.csv",
+#    "text/csv",
+#    key='download-csv'
+# )
 
 
-csv_df_concat = convert_df(df_concat)
-
-st.download_button(
-   "Press to Download",
-   csv_df_concat,
-   "file.csv",
-   "text/csv",
-   key='download-csv'
-)
+# @st.cache_data  # 👈 Set the parameter
+# def get_data():
+#     DF4 = df_concat
+#     return DF4
 
 
-@st.cache_data  # 👈 Set the parameter
-def get_data():
-    DF4 = df_concat
-    return DF4
-
-
-# st.dataframe(data)
+# # st.dataframe(data)
