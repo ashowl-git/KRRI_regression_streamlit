@@ -513,3 +513,11 @@ st.download_button(
    "text/csv",
    key='download-csv'
 )
+
+
+
+@st.cache_data
+def get_dataframe():
+    df_concat = df_concat
+    return df_concat
+
