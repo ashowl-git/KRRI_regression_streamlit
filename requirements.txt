@@ -16,6 +16,3 @@ xlsxwriter
 py3d
 obj2html
 google-cloud-storage
-# oauth2client
-# Gspread
-get_dataframe
