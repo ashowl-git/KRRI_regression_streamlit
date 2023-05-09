@@ -156,7 +156,7 @@ st.caption('metro regression streamlit 불러온 값 ', unsafe_allow_html=False)
 #   st.write(DF4)
 
 
-from metro_regression_streamlit import concat
+from pages.metro_regression_streamlit import concat
 DF4 = concat
 
 
