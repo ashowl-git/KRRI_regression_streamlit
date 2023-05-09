@@ -655,6 +655,5 @@ st.download_button(
 
 @st.cache_data(experimental_allow_widgets=True)  # 👈 Set the parameter
 def get_data():
-    num_rows = st.slider("Number of rows to get")  # 👈 Add a slider
-    data = api.get(..., num_rows)
-    return data
+    DF4 = df_concat
+    return DF4
