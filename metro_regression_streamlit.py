@@ -634,9 +634,7 @@ if file_path is not None:
 if st.button("내보내기") : 
   df_concat.to_excel('data/df_concat.xlsx')
 
-@st.cache_data
-if st.button("내보내기2") : 
-  df_concat
+
 
 
 
