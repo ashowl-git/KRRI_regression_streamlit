@@ -41,20 +41,17 @@ from sklearn.metrics import mean_absolute_percentage_error
 from sklearn.metrics import mean_squared_log_error
 
 #필요한 데이터 불러오기
-DF1 = pd.read_excel('data/일사량DB.xlsx')
+# DF1 = pd.read_excel('data/일사량DB.xlsx')
 
-DF2 = pd.read_excel('data/경사일사량DB.xlsx')
+# DF2 = pd.read_excel('data/경사일사량DB.xlsx')
 
-DF3 = pd.read_excel('data/맑은날DB.xlsx')
+# DF3 = pd.read_excel('data/맑은날DB.xlsx')
 
-DF5 = pd.read_excel('data/신재생DB.xlsx')
+# DF5 = pd.read_excel('data/신재생DB.xlsx')
 
-DF6 = pd.read_excel('data/제로db.xlsx')
+# DF6 = pd.read_excel('data/제로db.xlsx')
 
-# uploaded_file = st.file_uploader("Choose a file")
-# if uploaded_file is not None:
-#   df_concat = pd.read_csv(uploaded_file)
-#   st.write(df_concat)
+
 
 # df_concat
 
@@ -139,13 +136,26 @@ Occupied_floor_area_2 = st.sidebar.number_input('Occupied_floor_area_2', 5000, 1
 
 제로에너지등급 = st.sidebar.number_input('제로에너지등급', 1, 5, 5)
 A = DF6[제로에너지등급]
-##st.dataframe(A)
 
-if st.button("불러오기") : 
-    st.subheader('에너지 사용량 예측값')
-    st.caption('metro regression streamlit 불러온 값 ', unsafe_allow_html=False)
-    DF4=pd.read_excel('data/df_concat.xlsx')
-    st.dataframe(DF4)
+
+
+# ##st.dataframe(A)
+
+# if st.button("불러오기") : 
+#     st.subheader('에너지 사용량 예측값')
+#     st.caption('metro regression streamlit 불러온 값 ', unsafe_allow_html=False)
+#     DF4=pd.read_excel('data/df_concat.xlsx')
+#     st.dataframe(DF4)
+
+st.subheader('에너지 사용량 예측값')
+st.caption('metro regression streamlit 불러온 값 ', unsafe_allow_html=False)
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+  DF4 = pd.read_csv(uploaded_file)
+  st.write(DF4)
+
+
+
 
     # base 소요량 합계(보정계수 곱) = hh
     st.subheader('base 소요량 합계(보정계수 곱)')
