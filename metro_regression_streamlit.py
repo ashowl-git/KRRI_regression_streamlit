@@ -633,3 +633,20 @@ if file_path is not None:
 
 if st.button("내보내기") : 
   df_concat.to_excel('data/df_concat.xlsx')
+
+
+
+@st.experimental_memo
+def convert_df(df_concat):
+   return df_concat.to_csv(index=False).encode('utf-8')
+
+
+csv = convert_df(df_concat)
+
+st.download_button(
+   "Press to Download",
+   csv,
+   "file.csv",
+   "text/csv",
+   key='download-csv'
+)
