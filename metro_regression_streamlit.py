@@ -124,6 +124,8 @@ if uploaded_file is not None:
   df_raw = pd.read_excel(uploaded_file)
   st.write(df_raw)
 
+
+
 # df_raw.columns
 df_raw2 = df_raw.copy()
 
