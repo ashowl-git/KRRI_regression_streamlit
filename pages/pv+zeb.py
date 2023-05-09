@@ -155,7 +155,7 @@ if uploaded_file is not None:
   st.write(DF4)
 
 
-
+DF4 = 
 
 # base 소요량 합계(보정계수 곱) = hh
 st.subheader('base 소요량 합계(보정계수 곱)')
