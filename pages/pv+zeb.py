@@ -178,11 +178,11 @@ ii
 #기준1_에효 1++(비주거용 140 미만)
 x = {'base':[hh-140], 'Alt_1':[ii-140]}
 xx = pd.DataFrame(x, index=['에너지효율등급'])
-st.dataframe(xx
+st.dataframe(xx)
 #기준2_제로에너지 
 y = {'base':[A[0]/100*hh], 'Alt_1':[A[0]/100*ii]}
 yy = pd.DataFrame(y, index=['제로에너지'])
-st.dataframe(yy
+st.dataframe(yy)
 #표 합치기
 result = pd.concat([xx,yy])
 ## resul
