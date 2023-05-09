@@ -653,6 +653,8 @@ st.download_button(
    key='download-csv'
 )
 
+
+if __name__
 @st.cache_data  # 👈 Set the parameter
 def get_data():
     DF4 = df_concat
