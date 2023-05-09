@@ -154,8 +154,8 @@ st.caption('metro regression streamlit 불러온 값 ', unsafe_allow_html=False)
 #   DF4 = pd.read_csv(uploaded_file)
 #   st.write(DF4)
 
-import metro_regression_streamlit as mrs
-mrs.get_data()
+from metro_regression_streamlit import get_data
+get_data()
 
 # base 소요량 합계(보정계수 곱) = hh
 st.subheader('base 소요량 합계(보정계수 곱)')
