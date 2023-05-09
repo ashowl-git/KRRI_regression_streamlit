@@ -635,8 +635,8 @@ if st.button("내보내기") :
   df_concat.to_excel('data/df_concat.xlsx')
 
 
-global concat
-concat = df_concat
+# global concat
+# concat = df_concat
 
 
 # @st.cache_data
