@@ -643,11 +643,11 @@ def convert_df(df_concat):
    return df_concat.to_csv(index=False).encode('utf-8')
 
 
-csv = convert_df(df_concat)
+csv_df_concat = convert_df(df_concat)
 
 st.download_button(
    "Press to Download",
-   csv,
+   csv_df_concat,
    "file.csv",
    "text/csv",
    key='download-csv'
